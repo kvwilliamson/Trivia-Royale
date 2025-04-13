@@ -1,0 +1,738 @@
+[
+    {
+        "question": "Who was the first president of the United States? ",
+        "answer": " George Washington"
+    },
+    {
+        "question": "What is the chemical symbol for water? ",
+        "answer": " H₂O"
+    },
+    {
+        "question": "Who is the king of the gods in Greek mythology? ",
+        "answer": " Zeus"
+    },
+    {
+        "question": "What year was the first iPhone released? ",
+        "answer": " 2007"
+    },
+    {
+        "question": "Who painted the Mona Lisa? ",
+        "answer": " Leonardo da Vinci"
+    },
+    {
+        "question": "What is the highest-pitched instrument in the string family? ",
+        "answer": " Violin"
+    },
+    {
+        "question": "What is the primary ingredient in hummus? ",
+        "answer": " Chickpeas"
+    },
+    {
+        "question": "What is the highest-grossing film of all time? ",
+        "answer": " Avatar"
+    },
+    {
+        "question": "Who was the first human to walk on the moon? ",
+        "answer": " Neil Armstrong"
+    },
+    {
+        "question": "Who wrote the philosophical work \"Thus Spoke Zarathustra\"? ",
+        "answer": " Friedrich Nietzsche"
+    },
+    {
+        "question": "Which country won the first FIFA World Cup in 1930? ",
+        "answer": " Uruguay"
+    },
+    {
+        "question": "What fabric is known as the \"king of fabrics\" and is made from silkworm cocoons? ",
+        "answer": " Silk"
+    },
+    {
+        "question": "What is the largest rainforest in the world? ",
+        "answer": " Amazon Rainforest"
+    },
+    {
+        "question": "What is the value of Pi rounded to two decimal places? ",
+        "answer": " 3.14"
+    },
+    {
+        "question": "What is the most widely spoken language in the world by native speakers? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What is the best-selling video game of all time? ",
+        "answer": " Minecraft"
+    },
+    {
+        "question": "Who is considered the father of psychoanalysis? ",
+        "answer": " Sigmund Freud"
+    },
+    {
+        "question": "What is the name of the theater where Shakespeare's plays were performed? ",
+        "answer": " The Globe"
+    },
+    {
+        "question": "What is the study of the production, distribution, and consumption of goods and services called? ",
+        "answer": " Economics"
+    },
+    {
+        "question": "What is the term for the study of paranormal phenomena? ",
+        "answer": " Parapsychology"
+    },
+    {
+        "question": "What is the fastest commercial passenger jet ever built? ",
+        "answer": " Concorde"
+    },
+    {
+        "question": "What is the holy book of Islam called? ",
+        "answer": " Quran"
+    },
+    {
+        "question": "What is the longest river in the world? ",
+        "answer": " Nile River"
+    },
+    {
+        "question": "Who discovered penicillin? ",
+        "answer": " Alexander Fleming"
+    },
+    {
+        "question": "Who wrote the novel \"1984\"? ",
+        "answer": " George Orwell"
+    },
+    {
+        "question": "What is the most famous cycling race in the world? ",
+        "answer": " Tour de France"
+    },
+    {
+        "question": "Which country has won the most FIFA World Cup titles? ",
+        "answer": " Brazil"
+    },
+    {
+        "question": "What is the process by which plants make their own food called? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "What is the smallest prime number? ",
+        "answer": " 2"
+    },
+    {
+        "question": "What is the official language of Brazil? ",
+        "answer": " Portuguese"
+    },
+    {
+        "question": "What is the name of the protagonist in \"The Legend of Zelda\" series? ",
+        "answer": " Link"
+    },
+    {
+        "question": "What is the term for the fear of open or crowded spaces? ",
+        "answer": " Agoraphobia"
+    },
+    {
+        "question": "What is the name of the theater award given in the United States? ",
+        "answer": " Tony Award"
+    },
+    {
+        "question": "What is the term for a period of economic decline? ",
+        "answer": " Recession"
+    },
+    {
+        "question": "What is the name of the ship said to have vanished in the Bermuda Triangle? ",
+        "answer": " USS Cyclops"
+    },
+    {
+        "question": "What is the most widely used form of public transportation in the world? ",
+        "answer": " Bus"
+    },
+    {
+        "question": "What is the largest religion in the world by followers? ",
+        "answer": " Christianity"
+    },
+    {
+        "question": "What is the capital of Australia? ",
+        "answer": " Canberra"
+    },
+    {
+        "question": "Who is known as the father of modern medicine? ",
+        "answer": " Hippocrates"
+    },
+    {
+        "question": "Who wrote \"Pride and Prejudice\"? ",
+        "answer": " Jane Austen"
+    },
+    {
+        "question": "What is the term for a bicycle race over rough terrain? ",
+        "answer": " Cyclocross"
+    },
+    {
+        "question": "Which country hosted the 2018 FIFA World Cup? ",
+        "answer": " Russia"
+    },
+    {
+        "question": "What is the hardest natural substance on Earth? ",
+        "answer": " Diamond"
+    },
+    {
+        "question": "What is the square root of 144? ",
+        "answer": " 12"
+    },
+    {
+        "question": "What is the most spoken language in Africa? ",
+        "answer": " Arabic"
+    },
+    {
+        "question": "What is the name of the plumber protagonist in the \"Super Mario\" series? ",
+        "answer": " Mario"
+    },
+    {
+        "question": "What is the term for the part of the mind that operates below conscious awareness? ",
+        "answer": " Subconscious"
+    },
+    {
+        "question": "What is the name of the famous theater district in New York City? ",
+        "answer": " Broadway"
+    },
+    {
+        "question": "What is the term for the total value of goods and services produced in a country? ",
+        "answer": " GDP (Gross Domestic Product)"
+    },
+    {
+        "question": "What is the name of the legendary creature said to inhabit Loch Ness? ",
+        "answer": " Nessie"
+    },
+    {
+        "question": "What is the fastest land animal? ",
+        "answer": " Cheetah"
+    },
+    {
+        "question": "What is the holy book of Judaism called? ",
+        "answer": " Torah"
+    },
+    {
+        "question": "What is the largest desert in the world? ",
+        "answer": " Sahara Desert"
+    },
+    {
+        "question": "Who is known as the father of geometry? ",
+        "answer": " Euclid"
+    },
+    {
+        "question": "What is the official language of Japan? ",
+        "answer": " Japanese"
+    },
+    {
+        "question": "What is the name of the virtual reality headset developed by Oculus? ",
+        "answer": " Oculus Rift"
+    },
+    {
+        "question": "What is the term for the study of human behavior and mental processes? ",
+        "answer": " Psychology"
+    },
+    {
+        "question": "What is the name of the famous theater in London associated with Shakespeare? ",
+        "answer": " The Globe"
+    },
+    {
+        "question": "What is the term for a market structure with a single seller? ",
+        "answer": " Monopoly"
+    },
+    {
+        "question": "What is the name of the ghost-hunting duo in the TV show \"Ghost Hunters\"? ",
+        "answer": " Jason Hawes and Grant Wilson"
+    },
+    {
+        "question": "What is the most widely used fuel for airplanes? ",
+        "answer": " Jet fuel (kerosene)"
+    },
+    {
+        "question": "What is the largest Christian denomination in the world? ",
+        "answer": " Roman Catholicism"
+    },
+    {
+        "question": "What is the capital of Canada? ",
+        "answer": " Ottawa"
+    },
+    {
+        "question": "Who discovered the polio vaccine? ",
+        "answer": " Jonas Salk"
+    },
+    {
+        "question": "Who wrote \"The Great Gatsby\"? ",
+        "answer": " F. Scott Fitzgerald"
+    },
+    {
+        "question": "What is the term for a bicycle race on a track? ",
+        "answer": " Velodrome racing"
+    },
+    {
+        "question": "Which country won the 2014 FIFA World Cup? ",
+        "answer": " Germany"
+    },
+    {
+        "question": "What is the chemical symbol for gold? ",
+        "answer": " Au"
+    },
+    {
+        "question": "What is the sum of the angles in a triangle? ",
+        "answer": " 180 degrees"
+    },
+    {
+        "question": "What is the official language of China? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What is the name of the protagonist in the \"Final Fantasy\" series? ",
+        "answer": " Varies (no single protagonist)"
+    },
+    {
+        "question": "What is the term for the part of the brain responsible for memory? ",
+        "answer": " Hippocampus"
+    },
+    {
+        "question": "What is the name of the famous theater in Paris? ",
+        "answer": " Théâtre des Champs-Élysées"
+    },
+    {
+        "question": "What is the term for a tax on imports or exports? ",
+        "answer": " Tariff"
+    },
+    {
+        "question": "What is the name of the haunted hotel in Stephen King's \"The Shining\"? ",
+        "answer": " The Overlook Hotel"
+    },
+    {
+        "question": "What is the most common type of electric vehicle? ",
+        "answer": " Battery Electric Vehicle (BEV)"
+    },
+    {
+        "question": "What is the holy book of Hinduism called? ",
+        "answer": " Vedas"
+    },
+    {
+        "question": "What is the largest ocean on Earth? ",
+        "answer": " Pacific Ocean"
+    },
+    {
+        "question": "Who is known as the father of modern physics? ",
+        "answer": " Albert Einstein"
+    },
+    {
+        "question": "Who wrote \"To Kill a Mockingbird\"? ",
+        "answer": " Harper Lee"
+    },
+    {
+        "question": "What is the term for a bicycle race with multiple stages? ",
+        "answer": " Stage race"
+    },
+    {
+        "question": "Which country won the 2010 FIFA World Cup? ",
+        "answer": " Spain"
+    },
+    {
+        "question": "What is the chemical symbol for sodium? ",
+        "answer": " Na"
+    },
+    {
+        "question": "What is the value of the mathematical constant \"e\" rounded to two decimal places? ",
+        "answer": " 2.72"
+    },
+    {
+        "question": "What is the official language of India? ",
+        "answer": " Hindi"
+    },
+    {
+        "question": "What is the name of the protagonist in the \"Metroid\" series? ",
+        "answer": " Samus Aran"
+    },
+    {
+        "question": "What is the term for the study of dreams? ",
+        "answer": " Oneirology"
+    },
+    {
+        "question": "What is the name of the famous theater in Sydney, Australia? ",
+        "answer": " Sydney Opera House"
+    },
+    {
+        "question": "What is the term for a market structure with a few dominant sellers? ",
+        "answer": " Oligopoly"
+    },
+    {
+        "question": "What is the name of the haunted doll in the \"Conjuring\" universe? ",
+        "answer": " Annabelle"
+    },
+    {
+        "question": "What is the most common type of public transportation in cities? ",
+        "answer": " Bus"
+    },
+    {
+        "question": "What is the holy book of Buddhism called? ",
+        "answer": " Tripitaka"
+    },
+    {
+        "question": "What is the largest island in the world? ",
+        "answer": " Greenland"
+    },
+    {
+        "question": "Who is known as the father of modern chemistry? ",
+        "answer": " Antoine Lavoisier"
+    },
+    {
+        "question": "Who wrote \"The Catcher in the Rye\"? ",
+        "answer": " J.D. Salinger"
+    },
+    {
+        "question": "What is the term for a bicycle race with obstacles? ",
+        "answer": " Cyclocross"
+    },
+    {
+        "question": "Which country won the 2006 FIFA World Cup? ",
+        "answer": " Italy"
+    },
+    {
+        "question": "What is the chemical symbol for iron? ",
+        "answer": " Fe"
+    },
+    {
+        "question": "What is the value of the golden ratio rounded to two decimal places? ",
+        "answer": " 1.62"
+    },
+    {
+        "question": "What is the official language of France? ",
+        "answer": " French"
+    },
+    {
+        "question": "Who was the first President of the United States? ",
+        "answer": " George Washington"
+    },
+    {
+        "question": "What is the name of the Beatles' drummer? ",
+        "answer": " Ringo Starr"
+    },
+    {
+        "question": "What is the main ingredient in guacamole? ",
+        "answer": " Avocado"
+    },
+    {
+        "question": "Who was the first person to walk on the moon? ",
+        "answer": " Neil Armstrong"
+    },
+    {
+        "question": "Which philosopher wrote The Republic? ",
+        "answer": " Plato"
+    },
+    {
+        "question": "How many players are on a soccer team during a match? ",
+        "answer": " 11"
+    },
+    {
+        "question": "What is the most popular fabric for making denim jeans? ",
+        "answer": " Cotton"
+    },
+    {
+        "question": "What gas do plants absorb from the atmosphere? ",
+        "answer": " Carbon dioxide"
+    },
+    {
+        "question": "What is the square root of 64? ",
+        "answer": " 8"
+    },
+    {
+        "question": "What is the most widely spoken language in the world? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What is the name of the main character in The Legend of Zelda series? ",
+        "answer": " Link"
+    },
+    {
+        "question": "What is the term for a fear of heights? ",
+        "answer": " Acrophobia"
+    },
+    {
+        "question": "Who wrote the play Romeo and Juliet? ",
+        "answer": " William Shakespeare"
+    },
+    {
+        "question": "What is the study of how societies use scarce resources called? ",
+        "answer": " Economics"
+    },
+    {
+        "question": "What is the term for the belief in ghosts? ",
+        "answer": " Spiritualism"
+    },
+    {
+        "question": "What is the capital of France? ",
+        "answer": " Paris"
+    },
+    {
+        "question": "Who wrote Pride and Prejudice? ",
+        "answer": " Jane Austen"
+    },
+    {
+        "question": "What is the longest bone in the human body? ",
+        "answer": " Femur"
+    },
+    {
+        "question": "What is the term for a bicycle race over long distances? ",
+        "answer": " Endurance cycling"
+    },
+    {
+        "question": "Which country won the FIFA World Cup in 2018? ",
+        "answer": " France"
+    },
+    {
+        "question": "What ancient civilization built the pyramids? ",
+        "answer": " Ancient Egyptians"
+    },
+    {
+        "question": "Who is the goddess of wisdom in Greek mythology? ",
+        "answer": " Athena"
+    },
+    {
+        "question": "What does \"www\" stand for in a website address? ",
+        "answer": " World Wide Web"
+    },
+    {
+        "question": "Who designed the Eiffel Tower? ",
+        "answer": " Gustave Eiffel"
+    },
+    {
+        "question": "What is the name of the lead singer of Queen? ",
+        "answer": " Freddie Mercury"
+    },
+    {
+        "question": "What is the primary ingredient in sushi rice? ",
+        "answer": " Rice"
+    },
+    {
+        "question": "What is the name of the hobbit in The Lord of the Rings who carries the ring? ",
+        "answer": " Frodo Baggins"
+    },
+    {
+        "question": "What is the name of the galaxy that contains our solar system? ",
+        "answer": " The Milky Way"
+    },
+    {
+        "question": "Who said, \"I think, therefore I am\"? ",
+        "answer": " René Descartes"
+    },
+    {
+        "question": "How many points is a touchdown worth in American football? ",
+        "answer": " 6"
+    },
+    {
+        "question": "What is the name of the luxury fashion brand founded by Coco Chanel? ",
+        "answer": " Chanel"
+    },
+    {
+        "question": "What is the process of converting waste into reusable material called? ",
+        "answer": " Recycling"
+    },
+    {
+        "question": "What is the value of π (pi) rounded to two decimal places? ",
+        "answer": " 3.14"
+    },
+    {
+        "question": "What is the name of the plumber in Super Mario Bros.? ",
+        "answer": " Mario"
+    },
+    {
+        "question": "What is the term for a person who studies human behavior and the mind? ",
+        "answer": " Psychologist"
+    },
+    {
+        "question": "Who wrote the play Hamlet? ",
+        "answer": " William Shakespeare"
+    },
+    {
+        "question": "What is the term for a person who claims to communicate with the dead? ",
+        "answer": " Medium"
+    },
+    {
+        "question": "What is the name of the first airplane flown by the Wright Brothers? ",
+        "answer": " The Wright Flyer"
+    },
+    {
+        "question": "What is the holy book of Islam called? ",
+        "answer": " The Quran"
+    },
+    {
+        "question": "What is the largest ocean on Earth? ",
+        "answer": " The Pacific Ocean"
+    },
+    {
+        "question": "Who wrote 1984? ",
+        "answer": " George Orwell"
+    },
+    {
+        "question": "What is the term for a group of cyclists riding closely together? ",
+        "answer": " Peloton"
+    },
+    {
+        "question": "What is the name of the river that flows through Egypt? ",
+        "answer": " The Nile"
+    },
+    {
+        "question": "What is the smallest unit of matter? ",
+        "answer": " Atom"
+    },
+    {
+        "question": "Who is the god of the sea in Greek mythology? ",
+        "answer": " Poseidon"
+    },
+    {
+        "question": "What is the name of the first computer programmer? ",
+        "answer": " Ada Lovelace"
+    },
+    {
+        "question": "Who painted the ceiling of the Sistine Chapel? ",
+        "answer": " Michelangelo"
+    },
+    {
+        "question": "What is the name of the instrument that measures earthquakes? ",
+        "answer": " Seismograph"
+    },
+    {
+        "question": "What is the name of the main character in The Hunger Games? ",
+        "answer": " Katniss Everdeen"
+    },
+    {
+        "question": "What is the name of the first artificial satellite? ",
+        "answer": " Sputnik 1"
+    },
+    {
+        "question": "Who is known as the father of modern philosophy? ",
+        "answer": " René Descartes"
+    },
+    {
+        "question": "How many players are on a basketball team? ",
+        "answer": " 5"
+    },
+    {
+        "question": "What is the name of the luxury brand known for its red-soled shoes? ",
+        "answer": " Christian Louboutin"
+    },
+    {
+        "question": "What is the name of the layer of the atmosphere closest to Earth? ",
+        "answer": " Troposphere"
+    },
+    {
+        "question": "What is the name of the protagonist in Final Fantasy VII? ",
+        "answer": " Cloud Strife"
+    },
+    {
+        "question": "Who wrote the play Macbeth? ",
+        "answer": " William Shakespeare"
+    },
+    {
+        "question": "What is the term for the total value of goods and services produced in a country? ",
+        "answer": " Gross Domestic Product (GDP)"
+    },
+    {
+        "question": "What is the term for a person who studies paranormal phenomena? ",
+        "answer": " Parapsychologist"
+    },
+    {
+        "question": "What is the name of the first commercial jet airliner? ",
+        "answer": " Boeing 707"
+    },
+    {
+        "question": "What is the holy book of Christianity called? ",
+        "answer": " The Bible"
+    },
+    {
+        "question": "What is the largest country by land area? ",
+        "answer": " Russia"
+    },
+    {
+        "question": "Who wrote To Kill a Mockingbird? ",
+        "answer": " Harper Lee"
+    },
+    {
+        "question": "What is the term for a cyclist who specializes in climbing mountains? ",
+        "answer": " Climber"
+    },
+    {
+        "question": "Which country hosted the 2014 FIFA World Cup? ",
+        "answer": " Brazil"
+    },
+    {
+        "question": "What is the name of the ancient city destroyed by Mount Vesuvius? ",
+        "answer": " Pompeii"
+    },
+    {
+        "question": "What is the name of the force that pulls objects toward Earth? ",
+        "answer": " Gravity"
+    },
+    {
+        "question": "Who is the goddess of love in Greek mythology? ",
+        "answer": " Aphrodite"
+    },
+    {
+        "question": "What is the name of the first web browser? ",
+        "answer": " WorldWideWeb"
+    },
+    {
+        "question": "Who designed the Statue of Liberty? ",
+        "answer": " Frédéric Auguste Bartholdi"
+    },
+    {
+        "question": "What is the name of the band that released the album The Dark Side of the Moon? ",
+        "answer": " Pink Floyd"
+    },
+    {
+        "question": "What is the main ingredient in hummus? ",
+        "answer": " Chickpeas"
+    },
+    {
+        "question": "What is the name of the wizard in The Lord of the Rings? ",
+        "answer": " Gandalf"
+    },
+    {
+        "question": "What is the name of the first space shuttle? ",
+        "answer": " Columbia"
+    },
+    {
+        "question": "Who wrote The Communist Manifesto? ",
+        "answer": " Karl Marx and Friedrich Engels"
+    },
+    {
+        "question": "How many players are on a baseball team? ",
+        "answer": " 9"
+    },
+    {
+        "question": "What is the name of the fashion brand founded by Ralph Lauren? ",
+        "answer": " Polo Ralph Lauren"
+    },
+    {
+        "question": "What is the name of the process by which plants make their own food? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "What is the value of 5 squared? ",
+        "answer": " 25"
+    },
+    {
+        "question": "What is the name of the princess in The Legend of Zelda series? ",
+        "answer": " Princess Zelda"
+    },
+    {
+        "question": "What is the term for a person who studies mental processes and behavior? ",
+        "answer": " Psychologist"
+    },
+    {
+        "question": "Who wrote the play Othello? ",
+        "answer": " William Shakespeare"
+    },
+    {
+        "question": "What is the term for a period of rapid economic growth? ",
+        "answer": " Boom"
+    },
+    {
+        "question": "What is the term for a person who studies UFOs? ",
+        "answer": " Ufologist"
+    },
+    {
+        "question": "What is the name of the first car produced by Henry Ford? ",
+        "answer": " Model T"
+    }
+]

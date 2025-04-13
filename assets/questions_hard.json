@@ -1,0 +1,694 @@
+[
+    {
+        "question": "What ancient civilization developed the concept of zero independently of other cultures? ",
+        "answer": " The Maya civilization"
+    },
+    {
+        "question": "What is the name of the phenomenon where light bends around a massive object, as predicted by Einstein's theory of general relativity? ",
+        "answer": " Gravitational lensing"
+    },
+    {
+        "question": "In Norse mythology, what is the name of the bridge that connects Midgard (Earth) to Asgard? ",
+        "answer": " Bifröst"
+    },
+    {
+        "question": "What was the first computer virus to spread in the wild, and in what year was it discovered? ",
+        "answer": " The Elk Cloner virus, discovered in 1982"
+    },
+    {
+        "question": "What architectural style is characterized by pointed arches, ribbed vaults, and flying buttresses? ",
+        "answer": " Gothic architecture"
+    },
+    {
+        "question": "What is the term for a musical composition that is designed to be played as the sun rises? ",
+        "answer": " Alba or Aubade"
+    },
+    {
+        "question": "What is the French term for the culinary technique of slowly cooking food in fat at low temperatures? ",
+        "answer": " Confit"
+    },
+    {
+        "question": "What 1979 film is considered the first mainstream cyberpunk movie? ",
+        "answer": " Alien"
+    },
+    {
+        "question": "What is the name of the first satellite launched by the United States, and in what year was it launched? ",
+        "answer": " Explorer 1, launched in 1958"
+    },
+    {
+        "question": "What philosophical concept, introduced by Jean-Paul Sartre, refers to the idea that existence precedes essence? ",
+        "answer": " Existentialism"
+    },
+    {
+        "question": "What is the only sport to have been played on the moon, and who performed it? ",
+        "answer": " Golf, played by Alan Shepard during the Apollo 14 mission"
+    },
+    {
+        "question": "What fashion designer is credited with popularizing the \"little black dress\" in the 1920s? ",
+        "answer": " Coco Chanel"
+    },
+    {
+        "question": "What is the term for the process by which nitrogen is converted into ammonia by certain bacteria? ",
+        "answer": " Nitrogen fixation"
+    },
+    {
+        "question": "What is the name of the unsolved problem in mathematics that asks whether every even integer greater than 2 can be expressed as the sum of two primes? ",
+        "answer": " Goldbach's Conjecture"
+    },
+    {
+        "question": "What is the only language that is spoken in every country in the world? ",
+        "answer": " English"
+    },
+    {
+        "question": "What video game franchise features a character named Geralt of Rivia? ",
+        "answer": " The Witcher"
+    },
+    {
+        "question": "What psychological term describes the phenomenon where people remember uncompleted tasks better than completed ones? ",
+        "answer": " Zeigarnik effect"
+    },
+    {
+        "question": "What is the name of the theater technique where actors break the fourth wall and address the audience directly? ",
+        "answer": " Direct address"
+    },
+    {
+        "question": "What economic theory, developed by John Maynard Keynes, advocates for government intervention to stabilize the economy? ",
+        "answer": " Keynesian economics"
+    },
+    {
+        "question": "What is the term for the alleged ability to perceive events or objects beyond the natural range of the senses? ",
+        "answer": " Extrasensory perception (ESP)"
+    },
+    {
+        "question": "What is the name of the first commercially successful steam locomotive, built in 1829? ",
+        "answer": " The Rocket"
+    },
+    {
+        "question": "What is the holiest city in Judaism, Islam, and Christianity? ",
+        "answer": " Jerusalem"
+    },
+    {
+        "question": "What is the name of the deepest known point in the Earth's oceans? ",
+        "answer": " Challenger Deep"
+    },
+    {
+        "question": "What is the term for the surgical procedure that involves removing the appendix? ",
+        "answer": " Appendectomy"
+    },
+    {
+        "question": "What novel by James Joyce is known for its stream-of-consciousness narrative style? ",
+        "answer": " Ulysses"
+    },
+    {
+        "question": "What is the term for a bicycle race that takes place over a single day, often covering long distances? ",
+        "answer": " Classic race"
+    },
+    {
+        "question": "What is the only country to have participated in every FIFA World Cup since its inception in 1930? ",
+        "answer": " Brazil"
+    },
+    {
+        "question": "What is the name of the process by which plants release water vapor into the atmosphere? ",
+        "answer": " Transpiration"
+    },
+    {
+        "question": "What is the name of the mathematical constant that represents the ratio of a circle's circumference to its diameter? ",
+        "answer": " Pi (π)"
+    },
+    {
+        "question": "What is the most widely spoken constructed language in the world? ",
+        "answer": " Esperanto"
+    },
+    {
+        "question": "What video game is known for its procedurally generated levels and permadeath mechanic? ",
+        "answer": " Rogue"
+    },
+    {
+        "question": "What psychological disorder is characterized by a persistent fear of gaining weight and a distorted body image? ",
+        "answer": " Anorexia nervosa"
+    },
+    {
+        "question": "What is the name of the theater festival held annually in Avignon, France? ",
+        "answer": " Festival d'Avignon"
+    },
+    {
+        "question": "What economic indicator measures the average change in prices paid by consumers for goods and services? ",
+        "answer": " Consumer Price Index (CPI)"
+    },
+    {
+        "question": "What is the term for the phenomenon where a person experiences a sudden, intense feeling of fear or dread without an apparent cause? ",
+        "answer": " Panic attack"
+    },
+    {
+        "question": "What is the name of the first commercial jet airliner, introduced in 1952? ",
+        "answer": " De Havilland Comet"
+    },
+    {
+        "question": "What is the name of the sacred text in Zoroastrianism? ",
+        "answer": " Avesta"
+    },
+    {
+        "question": "What is the name of the longest mountain range in the world? ",
+        "answer": " The Andes"
+    },
+    {
+        "question": "What is the term for the medical condition characterized by an abnormal increase in the number of red blood cells? ",
+        "answer": " Polycythemia"
+    },
+    {
+        "question": "What novel by Gabriel García Márquez is considered a seminal work of magical realism? ",
+        "answer": " One Hundred Years of Solitude"
+    },
+    {
+        "question": "What is the term for a bicycle race that takes place over multiple stages, often lasting several weeks? ",
+        "answer": " Grand Tour"
+    },
+    {
+        "question": "What is the name of the only player to have won three FIFA World Cup titles? ",
+        "answer": " Pelé"
+    },
+    {
+        "question": "What is the name of the process by which carbon is transferred from the atmosphere to the Earth's surface? ",
+        "answer": " Carbon sequestration"
+    },
+    {
+        "question": "What is the name of the mathematical theorem that states that any non-prime number can be expressed as a unique product of prime numbers? ",
+        "answer": " Fundamental Theorem of Arithmetic"
+    },
+    {
+        "question": "What is the most widely spoken language in the world by total number of speakers? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What video game is known for its iconic phrase \"All your base are belong to us\"? ",
+        "answer": " Zero Wing"
+    },
+    {
+        "question": "What psychological term describes the tendency to attribute one's own actions to external factors while attributing others' actions to internal factors? ",
+        "answer": " Fundamental attribution error"
+    },
+    {
+        "question": "What is the name of the theater technique where actors perform without a script, creating the story as they go? ",
+        "answer": " Improvisation"
+    },
+    {
+        "question": "What is the term for the economic theory that advocates for minimal government intervention in the economy? ",
+        "answer": " Laissez-faire economics"
+    },
+    {
+        "question": "What is the name of the phenomenon where a person experiences a sudden, intense feeling of déjà vu? ",
+        "answer": " Déjà vu"
+    },
+    {
+        "question": "What is the name of the first commercial jet airliner to break the sound barrier? ",
+        "answer": " Concorde"
+    },
+    {
+        "question": "What is the name of the sacred text in Sikhism? ",
+        "answer": " Guru Granth Sahib"
+    },
+    {
+        "question": "What is the name of the largest desert in Asia? ",
+        "answer": " Gobi Desert"
+    },
+    {
+        "question": "What is the term for the medical condition characterized by an abnormal decrease in the number of white blood cells? ",
+        "answer": " Leukopenia"
+    },
+    {
+        "question": "What novel by Fyodor Dostoevsky explores the psychological and moral dilemmas of its protagonist, Raskolnikov? ",
+        "answer": " Crime and Punishment"
+    },
+    {
+        "question": "What is the term for a bicycle race that takes place on a closed circuit, often with multiple laps? ",
+        "answer": " Criterium"
+    },
+    {
+        "question": "What is the name of the only player to have scored in four different FIFA World Cup tournaments? ",
+        "answer": " Pelé"
+    },
+    {
+        "question": "What is the name of the process by which plants convert sunlight into chemical energy? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "What is the name of the mathematical concept that describes a surface with only one side and one edge? ",
+        "answer": " Möbius strip"
+    },
+    {
+        "question": "What is the most widely spoken language in the European Union? ",
+        "answer": " German"
+    },
+    {
+        "question": "What video game is known for its iconic phrase \"It's dangerous to go alone! Take this\"? ",
+        "answer": " The Legend of Zelda"
+    },
+    {
+        "question": "What psychological term describes the tendency to remember the first and last items in a list better than the middle items? ",
+        "answer": " Serial position effect"
+    },
+    {
+        "question": "What is the name of the theater technique where actors perform in a highly stylized, exaggerated manner? ",
+        "answer": " Expressionism"
+    },
+    {
+        "question": "What is the term for the economic theory that advocates for government control of the means of production? ",
+        "answer": " Socialism"
+    },
+    {
+        "question": "What is the name of the phenomenon where a person experiences a sudden, intense feeling of fear or dread without an apparent cause? ",
+        "answer": " Panic attack"
+    },
+    {
+        "question": "What is the name of the first commercial jet airliner to be powered by turbofan engines? ",
+        "answer": " Boeing 707"
+    },
+    {
+        "question": "What is the name of the sacred text in Jainism? ",
+        "answer": " Agamas"
+    },
+    {
+        "question": "What is the name of the largest desert in Africa? ",
+        "answer": " Sahara Desert"
+    },
+    {
+        "question": "What is the term for the medical condition characterized by an abnormal increase in the number of white blood cells? ",
+        "answer": " Leukocytosis"
+    },
+    {
+        "question": "What novel by Leo Tolstoy is considered one of the greatest works of literature ever written? ",
+        "answer": " War and Peace"
+    },
+    {
+        "question": "What is the term for a bicycle race that takes place on a track, often with steeply banked turns? ",
+        "answer": " Velodrome racing"
+    },
+    {
+        "question": "What is the name of the only player to have won the FIFA World Cup as both a player and a coach? ",
+        "answer": " Mário Zagallo"
+    },
+    {
+        "question": "What is the name of the process by which plants release oxygen into the atmosphere? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "Which ancient civilization developed the concept of zero independently of other cultures, and what was their name for it? ",
+        "answer": " The Maya civilization developed the concept of zero, calling it \"Nik.\""
+    },
+    {
+        "question": "In Greek mythology, who was the only mortal Gorgon sister, and what was her fate? ",
+        "answer": " Medusa was the only mortal Gorgon sister, and she was beheaded by Perseus."
+    },
+    {
+        "question": "What is the term for the phenomenon where light bends around a massive object, as predicted by Einstein's theory of general relativity? ",
+        "answer": " Gravitational lensing."
+    },
+    {
+        "question": "Which 19th-century architect designed the iconic Flatiron Building in New York City? ",
+        "answer": " Daniel Burnham."
+    },
+    {
+        "question": "What is the name of the musical technique where a melody is played backward, and which composer famously used it in his works? ",
+        "answer": " Retrograde, used by composers like Johann Sebastian Bach."
+    },
+    {
+        "question": "In culinary arts, what is the French term for the process of letting dough rest and rise before baking? ",
+        "answer": " Autolyse."
+    },
+    {
+        "question": "Which film director pioneered the use of \"bullet time\" visual effects in The Matrix? ",
+        "answer": " The Wachowskis."
+    },
+    {
+        "question": "What was the name of the first artificial satellite launched into space, and which country launched it? ",
+        "answer": " Sputnik 1, launched by the Soviet Union."
+    },
+    {
+        "question": "Which philosopher is known for the concept of the \"categorical imperative\" in moral philosophy? ",
+        "answer": " Immanuel Kant."
+    },
+    {
+        "question": "In sports, what is the term for a score of three under par on a single hole in golf? ",
+        "answer": " Albatross."
+    },
+    {
+        "question": "Which fashion designer introduced the \"little black dress\" in the 1920s? ",
+        "answer": " Coco Chanel."
+    },
+    {
+        "question": "What is the name of the process by which plants convert sunlight into chemical energy? ",
+        "answer": " Photosynthesis."
+    },
+    {
+        "question": "In mathematics, what is the name of the theorem that states that no three positive integers a, b, and c satisfy the equation aⁿ + bⁿ = cⁿ for any integer value of n greater than 2? ",
+        "answer": " Fermat's Last Theorem."
+    },
+    {
+        "question": "Which language is considered the oldest continuously spoken language in the world? ",
+        "answer": " Tamil."
+    },
+    {
+        "question": "In video games, what is the name of the fictional universe where The Legend of Zelda series takes place? ",
+        "answer": " Hyrule."
+    },
+    {
+        "question": "What psychological phenomenon describes the tendency to remember uncompleted tasks better than completed ones? ",
+        "answer": " The Zeigarnik Effect."
+    },
+    {
+        "question": "Which playwright wrote Waiting for Godot, a seminal work in the Theater of the Absurd? ",
+        "answer": " Samuel Beckett."
+    },
+    {
+        "question": "What economic term describes the situation where one party has more information than another, leading to an imbalance in transactions? ",
+        "answer": " Asymmetric information."
+    },
+    {
+        "question": "In paranormal studies, what is the term for the alleged ability to perceive events or objects beyond normal sensory contact? ",
+        "answer": " Extrasensory perception (ESP)."
+    },
+    {
+        "question": "What was the first commercially successful steam locomotive, and who designed it? ",
+        "answer": " The Rocket, designed by George Stephenson."
+    },
+    {
+        "question": "Which world religion believes in the concept of \"karma\" and the cycle of rebirth known as \"samsara\"? ",
+        "answer": " Hinduism."
+    },
+    {
+        "question": "What is the name of the deepest known point in the Earth's oceans, and where is it located? ",
+        "answer": " The Challenger Deep, located in the Mariana Trench."
+    },
+    {
+        "question": "Who is considered the father of modern medicine and authored the Hippocratic Oath? ",
+        "answer": " Hippocrates."
+    },
+    {
+        "question": "Which novel by James Joyce is known for its stream-of-consciousness narrative style? ",
+        "answer": " Ulysses."
+    },
+    {
+        "question": "In cycling, what is the term for the aerodynamic position where a rider tucks their body close to the handlebars? ",
+        "answer": " The drops."
+    },
+    {
+        "question": "Which football club is known as \"The Red Devils\" and is based in Manchester, England? ",
+        "answer": " Manchester United."
+    },
+    {
+        "question": "What ancient city was famously destroyed by the eruption of Mount Vesuvius in 79 AD? ",
+        "answer": " Pompeii."
+    },
+    {
+        "question": "In science, what is the name of the hypothetical particle that is its own antiparticle? ",
+        "answer": " Majorana fermion."
+    },
+    {
+        "question": "Which mythological figure is known for solving the riddle of the Sphinx in Greek mythology? ",
+        "answer": " Oedipus."
+    },
+    {
+        "question": "What is the name of the first programmable computer, and who designed it? ",
+        "answer": " The Z1, designed by Konrad Zuse."
+    },
+    {
+        "question": "Which artist painted the ceiling of the Sistine Chapel, and how long did it take him to complete? ",
+        "answer": " Michelangelo, and it took him approximately four years."
+    },
+    {
+        "question": "What is the term for a musical composition that is meant to evoke images or tell a story without using words? ",
+        "answer": " Program music."
+    },
+    {
+        "question": "In culinary arts, what is the name of the Japanese technique of grilling food over charcoal? ",
+        "answer": " Yakitori."
+    },
+    {
+        "question": "Which film won the first Academy Award for Best Picture in 1929? ",
+        "answer": " Wings."
+    },
+    {
+        "question": "What is the name of the first human-made object to leave the solar system? ",
+        "answer": " Voyager 1."
+    },
+    {
+        "question": "Which philosopher is known for the statement \"I think, therefore I am\"? ",
+        "answer": " René Descartes."
+    },
+    {
+        "question": "In sports, what is the term for a score of two under par on a single hole in golf? ",
+        "answer": " Eagle."
+    },
+    {
+        "question": "Which fashion designer is credited with inventing the wrap dress in the 1970s? ",
+        "answer": " Diane von Fürstenberg."
+    },
+    {
+        "question": "What is the name of the process by which carbon is cycled through the Earth's atmosphere, oceans, and land? ",
+        "answer": " The carbon cycle."
+    },
+    {
+        "question": "In mathematics, what is the name of the constant that represents the ratio of a circle's circumference to its diameter? ",
+        "answer": " Pi (π)."
+    },
+    {
+        "question": "Which language is considered the most widely spoken constructed language in the world? ",
+        "answer": " Esperanto."
+    },
+    {
+        "question": "In video games, what is the name of the protagonist in the Metroid series? ",
+        "answer": " Samus Aran."
+    },
+    {
+        "question": "What psychological term describes the phenomenon where people tend to conform to the behavior of a group? ",
+        "answer": " Groupthink."
+    },
+    {
+        "question": "Which playwright wrote A Streetcar Named Desire? ",
+        "answer": " Tennessee Williams."
+    },
+    {
+        "question": "What economic term describes the total value of goods and services produced by a country in a year? ",
+        "answer": " Gross Domestic Product (GDP)."
+    },
+    {
+        "question": "In paranormal studies, what is the term for the alleged ability to move objects with the mind? ",
+        "answer": " Telekinesis."
+    },
+    {
+        "question": "What was the name of the first successful commercial jet airliner? ",
+        "answer": " The Boeing 707."
+    },
+    {
+        "question": "Which world religion is centered around the teachings of Siddhartha Gautama? ",
+        "answer": " Buddhism."
+    },
+    {
+        "question": "What is the name of the longest river in the world, and how long is it? ",
+        "answer": " The Nile River, approximately 6,650 kilometers long."
+    },
+    {
+        "question": "Who is known as the father of modern surgery and introduced antiseptic techniques? ",
+        "answer": " Joseph Lister."
+    },
+    {
+        "question": "Which novel by Gabriel García Márquez is a seminal work of magical realism? ",
+        "answer": " One Hundred Years of Solitude."
+    },
+    {
+        "question": "In cycling, what is the term for the steepest part of a climb? ",
+        "answer": " The wall."
+    },
+    {
+        "question": "Which football club is known as \"The Blues\" and is based in London, England? ",
+        "answer": " Chelsea FC."
+    },
+    {
+        "question": "What ancient civilization built the city of Machu Picchu? ",
+        "answer": " The Inca civilization."
+    },
+    {
+        "question": "In science, what is the name of the particle that mediates the force of gravity? ",
+        "answer": " Graviton (hypothetical)."
+    },
+    {
+        "question": "Which mythological figure is known for his twelve labors in Greek mythology? ",
+        "answer": " Heracles (Hercules)."
+    },
+    {
+        "question": "What is the name of the first electronic general-purpose computer? ",
+        "answer": " ENIAC."
+    },
+    {
+        "question": "Which artist is known for painting The Starry Night? ",
+        "answer": " Vincent van Gogh."
+    },
+    {
+        "question": "What is the term for a musical composition that is written for a solo instrument accompanied by an orchestra? ",
+        "answer": " Concerto."
+    },
+    {
+        "question": "In culinary arts, what is the name of the French technique of cooking food slowly in fat at low temperatures? ",
+        "answer": " Confit."
+    },
+    {
+        "question": "Which film is known for the line \"Here's looking at you, kid\"? ",
+        "answer": " Casablanca."
+    },
+    {
+        "question": "What is the name of the first human to orbit the Earth? ",
+        "answer": " Yuri Gagarin."
+    },
+    {
+        "question": "Which philosopher is known for the concept of the \"will to power\"? ",
+        "answer": " Friedrich Nietzsche."
+    },
+    {
+        "question": "In sports, what is the term for a score of one under par on a single hole in golf? ",
+        "answer": " Birdie."
+    },
+    {
+        "question": "Which fashion designer is known for the \"New Look\" in post-World War II fashion? ",
+        "answer": " Christian Dior."
+    },
+    {
+        "question": "What is the name of the process by which nitrogen is converted into ammonia in the soil? ",
+        "answer": " Nitrogen fixation."
+    },
+    {
+        "question": "In mathematics, what is the name of the theorem that states that the sum of the squares of the legs of a right triangle equals the square of the hypotenuse? ",
+        "answer": " The Pythagorean theorem."
+    },
+    {
+        "question": "Which language is considered the most widely spoken native language in the world? ",
+        "answer": " Mandarin Chinese."
+    },
+    {
+        "question": "In video games, what is the name of the fictional currency in The Legend of Zelda series? ",
+        "answer": " Rupees."
+    },
+    {
+        "question": "What psychological term describes the phenomenon where people tend to remember the first and last items in a list better than the middle items? ",
+        "answer": " The serial position effect."
+    },
+    {
+        "question": "Which playwright wrote Death of a Salesman? ",
+        "answer": " Arthur Miller."
+    },
+    {
+        "question": "What economic term describes the situation where inflation and unemployment rise simultaneously? ",
+        "answer": " Stagflation."
+    },
+    {
+        "question": "In paranormal studies, what is the term for the alleged ability to communicate with the dead? ",
+        "answer": " Necromancy."
+    },
+    {
+        "question": "What was the name of the first supersonic passenger airliner? ",
+        "answer": " Concorde."
+    },
+    {
+        "question": "Which world religion is centered around the teachings of the Prophet Muhammad? ",
+        "answer": " Islam."
+    },
+    {
+        "question": "What is the name of the largest desert in the world, and where is it located? ",
+        "answer": " The Antarctic Desert, located in Antarctica."
+    },
+    {
+        "question": "Who is known as the father of modern anatomy and authored De humani corporis fabrica? ",
+        "answer": " Andreas Vesalius."
+    },
+    {
+        "question": "Which novel by Fyodor Dostoevsky explores the psychological and moral dilemmas of its protagonist, Raskolnikov? ",
+        "answer": " Crime and Punishment."
+    },
+    {
+        "question": "In cycling, what is the term for the final sprint to the finish line? ",
+        "answer": " The bunch sprint."
+    },
+    {
+        "question": "Which football club is known as \"The Gunners\" and is based in London, England? ",
+        "answer": " Arsenal FC."
+    },
+    {
+        "question": "What ancient civilization built the Great Pyramid of Giza? ",
+        "answer": " The ancient Egyptians."
+    },
+    {
+        "question": "In science, what is the name of the particle that is believed to give other particles mass? ",
+        "answer": " The Higgs boson."
+    },
+    {
+        "question": "Which mythological figure is known for his role in the Trojan War and his vulnerable heel? ",
+        "answer": " Achilles."
+    },
+    {
+        "question": "What is the name of the first computer virus to spread in the wild? ",
+        "answer": " The Elk Cloner."
+    },
+    {
+        "question": "Which artist is known for the sculpture David? ",
+        "answer": " Michelangelo."
+    },
+    {
+        "question": "What is the term for a musical composition that is written for a small group of instruments? ",
+        "answer": " Chamber music."
+    },
+    {
+        "question": "In culinary arts, what is the name of the Italian technique of cooking pasta until it is firm to the bite? ",
+        "answer": " Al dente."
+    },
+    {
+        "question": "Which film is known for the line \"May the Force be with you\"? ",
+        "answer": " Star Wars."
+    },
+    {
+        "question": "What is the name of the first woman to travel to space? ",
+        "answer": " Valentina Tereshkova."
+    },
+    {
+        "question": "Which philosopher is known for the concept of the \"veil of ignorance\" in justice theory? ",
+        "answer": " John Rawls."
+    },
+    {
+        "question": "In sports, what is the term for a score of even par on a single hole in golf? ",
+        "answer": " Par."
+    },
+    {
+        "question": "Which fashion designer is known for the \"little black dress\" and the Chanel suit? ",
+        "answer": " Coco Chanel."
+    },
+    {
+        "question": "What is the name of the process by which water is cycled through the Earth's atmosphere, oceans, and land? ",
+        "answer": " The water cycle."
+    },
+    {
+        "question": "In mathematics, what is the name of the theorem that states that any non-prime number can be expressed as a unique product of prime numbers? ",
+        "answer": " The Fundamental Theorem of Arithmetic."
+    },
+    {
+        "question": "Which language is considered the most widely spoken Romance language in the world? ",
+        "answer": " Spanish."
+    },
+    {
+        "question": "In video games, what is the name of the fictional universe where The Elder Scrolls series takes place? ",
+        "answer": " Tamriel."
+    },
+    {
+        "question": "What psychological term describes the phenomenon where people tend to overestimate the importance of information that is readily available to them? ",
+        "answer": " The availability heuristic."
+    },
+    {
+        "question": "Which playwright wrote The Crucible? ",
+        "answer": " Arthur Miller."
+    },
+    {
+        "question": "What economic term describes the situation where a country's currency loses value rapidly? ",
+        "answer": " Hyperinflation."
+    },
+    {
+        "question": "In paranormal studies, what is the term for the alleged ability to see events before they happen? ",
+        "answer": " Precognition."
+    }
+]

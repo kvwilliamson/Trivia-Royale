@@ -1,0 +1,726 @@
+[
+    {
+        "question": "Who was the first President of the United States? ",
+        "answer": " George Washington"
+    },
+    {
+        "question": "What is the chemical symbol for gold? ",
+        "answer": " Au"
+    },
+    {
+        "question": "In Greek mythology, who is the god of the sea? ",
+        "answer": " Poseidon"
+    },
+    {
+        "question": "What year was the first iPhone released? ",
+        "answer": " 2007"
+    },
+    {
+        "question": "Who painted the ceiling of the Sistine Chapel? ",
+        "answer": " Michelangelo"
+    },
+    {
+        "question": "What is the highest-pitched instrument in the string family? ",
+        "answer": " Violin"
+    },
+    {
+        "question": "What is the primary ingredient in traditional hummus? ",
+        "answer": " Chickpeas"
+    },
+    {
+        "question": "Who directed the 1994 film Pulp Fiction? ",
+        "answer": " Quentin Tarantino"
+    },
+    {
+        "question": "What is the name of the first artificial satellite launched into space? ",
+        "answer": " Sputnik 1"
+    },
+    {
+        "question": "Who is considered the father of modern philosophy? ",
+        "answer": " René Descartes"
+    },
+    {
+        "question": "Which country won the first FIFA World Cup in 1930? ",
+        "answer": " Uruguay"
+    },
+    {
+        "question": "What is the term for the Japanese art of flower arrangement? ",
+        "answer": " Ikebana"
+    },
+    {
+        "question": "What is the largest rainforest in the world? ",
+        "answer": " Amazon Rainforest"
+    },
+    {
+        "question": "What is the value of Pi rounded to two decimal places? ",
+        "answer": " 3.14"
+    },
+    {
+        "question": "What is the most widely spoken language in the world by native speakers? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What is the best-selling video game of all time? ",
+        "answer": " Minecraft"
+    },
+    {
+        "question": "Who proposed the theory of cognitive dissonance? ",
+        "answer": " Leon Festinger"
+    },
+    {
+        "question": "What is the name of the theater where Shakespeare’s plays were performed? ",
+        "answer": " The Globe"
+    },
+    {
+        "question": "What is the study of the production, distribution, and consumption of goods and services called? ",
+        "answer": " Economics"
+    },
+    {
+        "question": "What is the term for the study of paranormal phenomena? ",
+        "answer": " Parapsychology"
+    },
+    {
+        "question": "What is the fastest commercial passenger jet in the world? ",
+        "answer": " Concorde"
+    },
+    {
+        "question": "What is the holy book of Islam called? ",
+        "answer": " Quran"
+    },
+    {
+        "question": "What is the capital of Australia? ",
+        "answer": " Canberra"
+    },
+    {
+        "question": "Who discovered penicillin? ",
+        "answer": " Alexander Fleming"
+    },
+    {
+        "question": "Who wrote the novel 1984? ",
+        "answer": " George Orwell"
+    },
+    {
+        "question": "What is the most famous cycling race in France? ",
+        "answer": " Tour de France"
+    },
+    {
+        "question": "Who is the all-time top scorer in FIFA World Cup history? ",
+        "answer": " Miroslav Klose"
+    },
+    {
+        "question": "What is the chemical formula for water? ",
+        "answer": " H2O"
+    },
+    {
+        "question": "In Norse mythology, who is the god of thunder? ",
+        "answer": " Thor"
+    },
+    {
+        "question": "What is the name of the first programmable computer? ",
+        "answer": " Z3"
+    },
+    {
+        "question": "Who designed the Guggenheim Museum in New York? ",
+        "answer": " Frank Lloyd Wright"
+    },
+    {
+        "question": "What is the name of Beethoven’s only opera? ",
+        "answer": " Fidelio"
+    },
+    {
+        "question": "What is the main ingredient in sushi rice seasoning? ",
+        "answer": " Rice vinegar"
+    },
+    {
+        "question": "Who played the role of Neo in The Matrix? ",
+        "answer": " Keanu Reeves"
+    },
+    {
+        "question": "What is the name of the first human to walk on the moon? ",
+        "answer": " Neil Armstrong"
+    },
+    {
+        "question": "What is the philosophical concept of \"the unexamined life is not worth living\" attributed to? ",
+        "answer": " Socrates"
+    },
+    {
+        "question": "Which country has won the most Olympic gold medals in history? ",
+        "answer": " United States"
+    },
+    {
+        "question": "What is the term for a designer who creates haute couture clothing? ",
+        "answer": " Fashion designer"
+    },
+    {
+        "question": "What is the process by which plants convert sunlight into energy called? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "What is the square root of 144? ",
+        "answer": " 12"
+    },
+    {
+        "question": "What is the official language of Brazil? ",
+        "answer": " Portuguese"
+    },
+    {
+        "question": "What is the name of the protagonist in The Legend of Zelda series? ",
+        "answer": " Link"
+    },
+    {
+        "question": "Who is known for the hierarchy of needs theory in psychology? ",
+        "answer": " Abraham Maslow"
+    },
+    {
+        "question": "What is the term for a play on words that produces a humorous effect? ",
+        "answer": " Pun"
+    },
+    {
+        "question": "What is the term for the total value of goods and services produced in a country in a year? ",
+        "answer": " Gross Domestic Product (GDP)"
+    },
+    {
+        "question": "What is the term for the study of ghosts and other supernatural beings? ",
+        "answer": " Ghost hunting"
+    },
+    {
+        "question": "What is the fastest land animal? ",
+        "answer": " Cheetah"
+    },
+    {
+        "question": "What is the largest desert in the world? ",
+        "answer": " Sahara Desert"
+    },
+    {
+        "question": "Who is known as the father of modern medicine? ",
+        "answer": " Hippocrates"
+    },
+    {
+        "question": "Who wrote Pride and Prejudice? ",
+        "answer": " Jane Austen"
+    },
+    {
+        "question": "What is the term for a bicycle race held on a track? ",
+        "answer": " Velodrome racing"
+    },
+    {
+        "question": "Who is the only player to win three FIFA World Cup titles? ",
+        "answer": " Pelé"
+    },
+    {
+        "question": "What is the atomic number of carbon? ",
+        "answer": " 6"
+    },
+    {
+        "question": "In Roman mythology, who is the equivalent of the Greek god Zeus? ",
+        "answer": " Jupiter"
+    },
+    {
+        "question": "What is the name of the first commercially successful personal computer? ",
+        "answer": " Apple II"
+    },
+    {
+        "question": "Who designed the Sydney Opera House? ",
+        "answer": " Jørn Utzon"
+    },
+    {
+        "question": "What is the name of the famous symphony by Beethoven that features \"Ode to Joy\"? ",
+        "answer": " Symphony No. 9"
+    },
+    {
+        "question": "What is the primary ingredient in paella? ",
+        "answer": " Rice"
+    },
+    {
+        "question": "Who directed the 1977 film Star Wars? ",
+        "answer": " George Lucas"
+    },
+    {
+        "question": "What is the name of the first space shuttle launched by NASA? ",
+        "answer": " Columbia"
+    },
+    {
+        "question": "What is the philosophical concept of \"I think, therefore I am\" attributed to? ",
+        "answer": " René Descartes"
+    },
+    {
+        "question": "Which country hosted the 2016 Summer Olympics? ",
+        "answer": " Brazil"
+    },
+    {
+        "question": "What is the term for the art of arranging clothing and accessories in a visually appealing way? ",
+        "answer": " Styling"
+    },
+    {
+        "question": "What is the largest organ in the human body? ",
+        "answer": " Skin"
+    },
+    {
+        "question": "What is the value of Euler’s number (e) rounded to two decimal places? ",
+        "answer": " 2.72"
+    },
+    {
+        "question": "What is the official language of Japan? ",
+        "answer": " Japanese"
+    },
+    {
+        "question": "What is the name of the main character in The Witcher series? ",
+        "answer": " Geralt of Rivia"
+    },
+    {
+        "question": "Who is known for the theory of operant conditioning in psychology? ",
+        "answer": " B.F. Skinner"
+    },
+    {
+        "question": "What is the term for a dramatic work that is humorous or satirical in nature? ",
+        "answer": " Comedy"
+    },
+    {
+        "question": "What is the term for the study of how resources are allocated in a market? ",
+        "answer": " Microeconomics"
+    },
+    {
+        "question": "What is the term for the belief in life after death? ",
+        "answer": " Afterlife"
+    },
+    {
+        "question": "What is the fastest bird in the world? ",
+        "answer": " Peregrine falcon"
+    },
+    {
+        "question": "What is the longest river in the world? ",
+        "answer": " Nile River"
+    },
+    {
+        "question": "Who is known as the father of modern surgery? ",
+        "answer": " Ambroise Paré"
+    },
+    {
+        "question": "Who wrote The Great Gatsby? ",
+        "answer": " F. Scott Fitzgerald"
+    },
+    {
+        "question": "What is the term for a long-distance bicycle race? ",
+        "answer": " Gran fondo"
+    },
+    {
+        "question": "Who is the only player to win the FIFA World Cup as both a player and a coach? ",
+        "answer": " Mário Zagallo"
+    },
+    {
+        "question": "What is the chemical symbol for sodium? ",
+        "answer": " Na"
+    },
+    {
+        "question": "In Egyptian mythology, who is the god of the sun? ",
+        "answer": " Ra"
+    },
+    {
+        "question": "What is the name of the first search engine on the internet? ",
+        "answer": " Archie"
+    },
+    {
+        "question": "Who designed the Eiffel Tower? ",
+        "answer": " Gustave Eiffel"
+    },
+    {
+        "question": "What is the name of the famous opera by Mozart that features the character Don Giovanni? ",
+        "answer": " Don Giovanni"
+    },
+    {
+        "question": "What is the primary ingredient in guacamole? ",
+        "answer": " Avocado"
+    },
+    {
+        "question": "Who directed the 1993 film Jurassic Park? ",
+        "answer": " Steven Spielberg"
+    },
+    {
+        "question": "What is the name of the first space station launched by the Soviet Union? ",
+        "answer": " Salyut 1"
+    },
+    {
+        "question": "What is the philosophical concept of \"the ends justify the means\" attributed to? ",
+        "answer": " Niccolò Machiavelli"
+    },
+    {
+        "question": "Which country won the most medals in the 2020 Summer Olympics? ",
+        "answer": " United States"
+    },
+    {
+        "question": "What is the term for the art of designing and constructing buildings? ",
+        "answer": " Architecture"
+    },
+    {
+        "question": "What is the process by which water vapor turns into liquid water called? ",
+        "answer": " Condensation"
+    },
+    {
+        "question": "What is the square root of 225? ",
+        "answer": " 15"
+    },
+    {
+        "question": "What is the official language of India? ",
+        "answer": " Hindi"
+    },
+    {
+        "question": "What is the name of the main character in Final Fantasy VII? ",
+        "answer": " Cloud Strife"
+    },
+    {
+        "question": "Who is known for the theory of attachment in psychology? ",
+        "answer": " John Bowlby"
+    },
+    {
+        "question": "What is the term for a dramatic work that is serious and often ends in tragedy? ",
+        "answer": " Tragedy"
+    },
+    {
+        "question": "What is the term for the study of the economy as a whole? ",
+        "answer": " Macroeconomics"
+    },
+    {
+        "question": "What is the term for the belief in the existence of extraterrestrial life? ",
+        "answer": " Exobiology"
+    },
+    {
+        "question": "What is the fastest fish in the ocean? ",
+        "answer": " Sailfish"
+    },
+    {
+        "question": "What is the highest mountain in the world? ",
+        "answer": " Mount Everest"
+    },
+    {
+        "question": "Who is known as the father of modern anatomy? ",
+        "answer": " Andreas Vesalius"
+    },
+    {
+        "question": "Who wrote To Kill a Mockingbird? ",
+        "answer": " Harper Lee"
+    },
+    {
+        "question": "Who was the first Prime Minister of India? ",
+        "answer": " Jawaharlal Nehru"
+    },
+    {
+        "question": "Who signed the Magna Carta in 1215? ",
+        "answer": " King John of England"
+    },
+    {
+        "question": "What was the name of the ship that brought the Pilgrims to America? ",
+        "answer": " Mayflower"
+    },
+    {
+        "question": "What is the primary source of energy for Earth's climate system? ",
+        "answer": " The Sun"
+    },
+    {
+        "question": "Who proposed the theory of relativity? ",
+        "answer": " Albert Einstein"
+    },
+    {
+        "question": "What gas do plants absorb from the atmosphere during photosynthesis? ",
+        "answer": " Carbon Dioxide"
+    },
+    {
+        "question": "Who is the Roman equivalent of the Greek god Zeus? ",
+        "answer": " Jupiter"
+    },
+    {
+        "question": "In Norse mythology, what is the name of the tree that connects the nine worlds? ",
+        "answer": " Yggdrasil"
+    },
+    {
+        "question": "Which Egyptian god is associated with the afterlife and mummification? ",
+        "answer": " Anubis"
+    },
+    {
+        "question": "Who invented the World Wide Web? ",
+        "answer": " Tim Berners-Lee"
+    },
+    {
+        "question": "What does 'URL' stand for in internet terminology? ",
+        "answer": " Uniform Resource Locator"
+    },
+    {
+        "question": "Which company developed the first smartphone? ",
+        "answer": " IBM (Simon Personal Communicator)"
+    },
+    {
+        "question": "Who painted the Sistine Chapel ceiling? ",
+        "answer": " Michelangelo"
+    },
+    {
+        "question": "What architectural style is the Eiffel Tower an example of? ",
+        "answer": " Structural Expressionism"
+    },
+    {
+        "question": "Who is known for the painting \"The Persistence of Memory\"? ",
+        "answer": " Salvador Dalí"
+    },
+    {
+        "question": "Who composed the \"Moonlight Sonata\"? ",
+        "answer": " Ludwig van Beethoven"
+    },
+    {
+        "question": "What is the highest-selling album of all time? ",
+        "answer": " \"Thriller\" by Michael Jackson"
+    },
+    {
+        "question": "Which band popularized grunge music in the early 1990s? ",
+        "answer": " Nirvana"
+    },
+    {
+        "question": "What is the main ingredient in traditional pesto sauce? ",
+        "answer": " Basil"
+    },
+    {
+        "question": "Which country is known for inventing sushi? ",
+        "answer": " Japan"
+    },
+    {
+        "question": "What type of pastry is used in a traditional croissant? ",
+        "answer": " Puff Pastry"
+    },
+    {
+        "question": "Who directed the movie \"The Godfather\"? ",
+        "answer": " Francis Ford Coppola"
+    },
+    {
+        "question": "What was the first feature-length animated film? ",
+        "answer": " \"Snow White and the Seven Dwarfs\""
+    },
+    {
+        "question": "Who plays the character of Tony Stark in the Marvel Cinematic Universe? ",
+        "answer": " Robert Downey Jr."
+    },
+    {
+        "question": "Which planet is known as the Red Planet? ",
+        "answer": " Mars"
+    },
+    {
+        "question": "Who was the first human to step on the Moon? ",
+        "answer": " Neil Armstrong"
+    },
+    {
+        "question": "What is the name of NASA's long-term project to explore Mars? ",
+        "answer": " Mars Exploration Program"
+    },
+    {
+        "question": "Who is known as the \"Father of Western Philosophy\"? ",
+        "answer": " Socrates"
+    },
+    {
+        "question": "What philosophical work did René Descartes write? ",
+        "answer": " \"Meditations on First Philosophy\""
+    },
+    {
+        "question": "What is the philosophical idea that knowledge comes only from sensory experience? ",
+        "answer": " Empiricism"
+    },
+    {
+        "question": "What is the national sport of Japan? ",
+        "answer": " Sumo"
+    },
+    {
+        "question": "How many players are on a basketball team? ",
+        "answer": " 5"
+    },
+    {
+        "question": "Who holds the record for the most consecutive wins in Formula 1? ",
+        "answer": " Sebastian Vettel"
+    },
+    {
+        "question": "Who is widely credited with inventing the miniskirt? ",
+        "answer": " Mary Quant"
+    },
+    {
+        "question": "What does 'haute couture' literally mean in French? ",
+        "answer": " High sewing"
+    },
+    {
+        "question": "Which fashion designer was known for his New Look in the 1940s? ",
+        "answer": " Christian Dior"
+    },
+    {
+        "question": "What is the primary greenhouse gas contributing to global warming? ",
+        "answer": " Carbon Dioxide"
+    },
+    {
+        "question": "What does CFCs stand for in relation to ozone depletion? ",
+        "answer": " Chlorofluorocarbons"
+    },
+    {
+        "question": "What is the process by which plants convert light energy into chemical energy? ",
+        "answer": " Photosynthesis"
+    },
+    {
+        "question": "What is the mathematical constant approximately equal to 3.14159? ",
+        "answer": " Pi"
+    },
+    {
+        "question": "Who is known for his contributions to the development of calculus? ",
+        "answer": " Isaac Newton and Gottfried Wilhelm Leibniz"
+    },
+    {
+        "question": "What is the branch of mathematics dealing with shapes, sizes, and positions of figures? ",
+        "answer": " Geometry"
+    },
+    {
+        "question": "What is the most widely spoken language in the world by number of native speakers? ",
+        "answer": " Mandarin Chinese"
+    },
+    {
+        "question": "What is the study of the structure of language called? ",
+        "answer": " Syntax"
+    },
+    {
+        "question": "Which language has the most words in its dictionary? ",
+        "answer": " English"
+    },
+    {
+        "question": "Who created the character Mario? ",
+        "answer": " Shigeru Miyamoto"
+    },
+    {
+        "question": "What was the first commercially successful video game? ",
+        "answer": " Pong"
+    },
+    {
+        "question": "Which game series features the character Lara Croft? ",
+        "answer": " Tomb Raider"
+    },
+    {
+        "question": "Who is considered the founder of psychoanalysis? ",
+        "answer": " Sigmund Freud"
+    },
+    {
+        "question": "What is the term for the psychological disorder characterized by extreme mood swings? ",
+        "answer": " Bipolar Disorder"
+    },
+    {
+        "question": "Which part of the brain is responsible for memory, especially long-term memory? ",
+        "answer": " Hippocampus"
+    },
+    {
+        "question": "Who wrote the play \"A Streetcar Named Desire\"? ",
+        "answer": " Tennessee Williams"
+    },
+    {
+        "question": "What is the name of the theater where Shakespeare's plays were first performed? ",
+        "answer": " The Globe"
+    },
+    {
+        "question": "What term describes a play where the audience knows something the characters do not? ",
+        "answer": " Dramatic Irony"
+    },
+    {
+        "question": "Who wrote \"The Wealth of Nations\"? ",
+        "answer": " Adam Smith"
+    },
+    {
+        "question": "What does GDP stand for? ",
+        "answer": " Gross Domestic Product"
+    },
+    {
+        "question": "What economic theory suggests that increasing the money supply leads to inflation? ",
+        "answer": " Monetarism"
+    },
+    {
+        "question": "What is the study of ghostly phenomena called? ",
+        "answer": " Parapsychology"
+    },
+    {
+        "question": "What device is commonly used to detect electromagnetic changes associated with ghost activity? ",
+        "answer": " EMF Meter"
+    },
+    {
+        "question": "Who is famously known as the \"Ghost Hunters\" from TV? ",
+        "answer": " Jason Hawes and Grant Wilson"
+    },
+    {
+        "question": "Who invented the steam engine? ",
+        "answer": " Thomas Savery (though greatly improved by James Watt)"
+    },
+    {
+        "question": "What is the world's busiest airport by passenger traffic? ",
+        "answer": " Hartsfield-Jackson Atlanta International Airport"
+    },
+    {
+        "question": "What was the first commercial jet airliner? ",
+        "answer": " De Havilland Comet"
+    },
+    {
+        "question": "What is the holy book of Islam? ",
+        "answer": " Quran"
+    },
+    {
+        "question": "In Buddhism, what does the term 'Nirvana' signify? ",
+        "answer": " Liberation from suffering"
+    },
+    {
+        "question": "Which religion practices the Day of the Dead? ",
+        "answer": " Christianity (specifically Catholicism in Mexico)"
+    },
+    {
+        "question": "Which country has the most deserts in the world? ",
+        "answer": " Australia"
+    },
+    {
+        "question": "What is the longest river in the world? ",
+        "answer": " The Nile"
+    },
+    {
+        "question": "What mountain range separates Europe from Asia? ",
+        "answer": " The Ural Mountains"
+    },
+    {
+        "question": "Who is known as the \"Father of Medicine\"? ",
+        "answer": " Hippocrates"
+    },
+    {
+        "question": "What vitamin is produced by the human body when exposed to sunlight? ",
+        "answer": " Vitamin D"
+    },
+    {
+        "question": "What is the medical term for high blood pressure? ",
+        "answer": " Hypertension"
+    },
+    {
+        "question": "Who wrote \"Pride and Prejudice\"? ",
+        "answer": " Jane Austen"
+    },
+    {
+        "question": "What is the name of the hobbit in J.R.R. Tolkien's \"The Hobbit\"? ",
+        "answer": " Bilbo Baggins"
+    },
+    {
+        "question": "Who is the author of \"One Hundred Years of Solitude\"? ",
+        "answer": " Gabriel García Márquez"
+    },
+    {
+        "question": "What is the most famous bicycle race in the world? ",
+        "answer": " Tour de France"
+    },
+    {
+        "question": "Who holds the record for the most Tour de France victories? ",
+        "answer": " Eddy Merckx"
+    },
+    {
+        "question": "What does UCI stand for in cycling? ",
+        "answer": " Union Cycliste Internationale"
+    },
+    {
+        "question": "Which country won the first FIFA World Cup? ",
+        "answer": " Uruguay"
+    },
+    {
+        "question": "Who is known as the \"King of Football\"? ",
+        "answer": " Pelé"
+    },
+    {
+        "question": "What is the most prestigious club competition in European football? ",
+        "answer": " UEFA Champions League"
+    }
+]
