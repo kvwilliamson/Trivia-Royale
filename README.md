@@ -1,8 +1,8 @@
-# Trivia Royale
+# Trivia Royale 🎮
 
 A feature-rich trivia game built with Python and Tkinter that uses AI to generate questions and supports text-to-speech.
 
-## Features
+## ✨ Features
 
 - **AI-Powered Questions**: Generates unique trivia questions using Gemini and Mistral AI models
 - **Text-to-Speech**: Built-in voice narration for questions and answers
@@ -13,71 +13,96 @@ A feature-rich trivia game built with Python and Tkinter that uses AI to generat
 - **Category Selection**: Choose from various trivia categories
 - **Score Tracking**: Automatic score management for all teams
 
-## Requirements
+## 🚀 Quick Start
+
+### Prerequisites
 
 - Python 3.11+
-- Required Python packages:
-  - tkinter
-  - pyttsx3
-  - pygame
-  - PIL (Pillow)
-  - google.generativeai
-  - python-dotenv
-  - requests
-  - pyperclip
+- API Keys:
+  - Gemini API key from Google AI Studio
+  - Mistral API key from Mistral AI
 
-## Setup
+### Installation
 
-1. Clone the repository
-2. Install required packages:
+1. Clone the repository:
+```bash
+git clone https://github.com/kvwilliamson/trivia-royale.git
+cd trivia-royale
+```
+
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
-3. Create a `.env` file in the project root with your API keys:
-```
+
+4. Create a `.env` file in the project root:
+```env
 GEMINI_API_KEY=your_gemini_api_key
 MISTRAL_API_KEY=your_mistral_api_key
 ```
 
-## Usage
+### Running the Game
 
-1. Run the game:
 ```bash
 python TriviaRoyale.py
 ```
 
-2. Game Controls:
+## 🎮 Game Controls
+
+- `Space`: Reveal answer
 - `Y`: Mark answer as correct (+10 points)
 - `N`: Mark answer as incorrect (no points)
 - `G`: Google the current question for fact-checking
-- `Space`: Reveal answer
 - `ESC`: Exit game
 
-## Features in Detail
+## 🏗️ Project Structure
 
-### Question Generation
-- Uses both Gemini and Mistral AI models with automatic fallback
-- Customizable categories and difficulty levels
-- JSON-formatted question structure for consistency
+```
+TriviaRoyale/
+├── assets/               # Game assets (images, sounds)
+├── src/                 # Source code
+│   ├── __init__.py
+│   ├── ui/             # UI-related code
+│   ├── ai/             # AI integration code
+│   └── utils/          # Utility functions
+├── tests/              # Test files
+├── requirements.txt    # Project dependencies
+├── TriviaRoyale.py    # Main game file
+└── README.md          # This file
+```
 
-### Text-to-Speech
-- Synchronized voice narration
-- Compatible with system voices
-- Adjustable speech settings
+## 🧪 Running Tests
 
-### Final Round
-- Special wagering system
-- Teams can bet their points
-- High-stakes final question
+```bash
+pytest tests/
+```
 
-## Contributing
+## 🤝 Contributing
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-[Your chosen license]
+## 📝 License
 
-## Credits
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Created by [Your Name]
+## Author
+
+Kelly Williamson ([@kvwilliamson](https://github.com/kvwilliamson))
+
+## 🙏 Acknowledgments
+
+- Google AI for Gemini API
+- Mistral AI for their language model
+- All contributors and testers
