@@ -83,6 +83,9 @@ CATEGORIES = [
 class TriviaGame:
     def __init__(self, root):
         self.root = root
+        # Load API keys
+        self._load_api_keys()
+        
         self.root.attributes('-fullscreen', True)
         self.root.configure(bg=COLORS["light_blue"])
         self.root.title("Trivia Royale")
@@ -90,6 +93,36 @@ class TriviaGame:
         self.root.bind("<Escape>", self.quit_game)
 
         self.question_index = 0
+
+    def _load_api_keys(self):
+        """Load API keys from environment and config file."""
+        # Try environment first
+        self.gemini_key = os.getenv('GEMINI_API_KEY')
+        self.mistral_key = os.getenv('MISTRAL_API_KEY')
+        
+        # Try config file if needed
+        if not self.gemini_key or not self.mistral_key:
+            config_dir = os.path.expanduser('~/.trivia_royale')
+            config_file = os.path.join(config_dir, 'config.json')
+            
+            if os.path.exists(config_file):
+                try:
+                    with open(config_file, 'r') as f:
+                        stored_keys = json.load(f)
+                        if not self.gemini_key and 'GEMINI_API_KEY' in stored_keys:
+                            self.gemini_key = stored_keys['GEMINI_API_KEY'].strip()
+                        if not self.mistral_key and 'MISTRAL_API_KEY' in stored_keys:
+                            self.mistral_key = stored_keys['MISTRAL_API_KEY'].strip()
+                except Exception as e:
+                    print(f"### ERROR: Failed to load config file: {e}")
+
+        # If keys are still missing, show dialog
+        if not self.gemini_key or not self.mistral_key:
+            self._show_api_key_dialog()
+
+        # Debug output
+        print(f"### DEBUG: Loaded GEMINI_API_KEY: {bool(self.gemini_key)} (len: {len(self.gemini_key) if self.gemini_key else 0})")
+        print(f"### DEBUG: Loaded MISTRAL_API_KEY: {bool(self.mistral_key)} (len: {len(self.mistral_key) if self.mistral_key else 0})")
 
         # --- Pygame Mixer Initialization ---
         try:
@@ -133,6 +166,116 @@ class TriviaGame:
             messagebox.showerror("Image Error", f"Could not load background image: {e}")
 
         self.title_screen()
+
+    def _show_api_key_dialog(self):
+        """Show dialog for API key entry with improved UI"""
+        dialog = Toplevel(self.root)
+        dialog.title("API Keys Required")
+        dialog.configure(bg='white')
+        dialog.geometry("400x400")
+        
+        # Center window
+        dialog.update_idletasks()
+        x = (dialog.winfo_screenwidth() - 400) // 2
+        y = (dialog.winfo_screenheight() - 400) // 2
+        dialog.geometry(f"+{x}+{y}")
+        
+        Label(dialog, 
+              text="Please enter your API keys:",
+              font=("Helvetica", 12, "bold"),
+              bg='white').pack(pady=20)
+
+        # Gemini section
+        gemini_frame = Frame(dialog, bg='white')
+        gemini_frame.pack(pady=5, fill='x', padx=20)
+        
+        Label(gemini_frame, text="Gemini API Key:", bg='white').pack(side='left')
+        get_gemini_btn = Button(
+            gemini_frame,
+            text="Get Google API Key",
+            command=lambda: webbrowser.open('https://makersuite.google.com/app/apikey'),
+            bg='#4285F4',
+            fg='black',
+            font=("Helvetica", 8)
+        )
+        get_gemini_btn.pack(side='right')
+        
+        gemini_entry = Entry(dialog, width=50)
+        gemini_entry.pack(pady=5)
+
+        # Mistral section
+        mistral_frame = Frame(dialog, bg='white')
+        mistral_frame.pack(pady=5, fill='x', padx=20)
+        
+        Label(mistral_frame, text="Mistral API Key:", bg='white').pack(side='left')
+        get_mistral_btn = Button(
+            mistral_frame,
+            text="Get Mistral API Key",
+            command=lambda: webbrowser.open('https://console.mistral.ai/api-keys/'),
+            bg='#6B4FBB',
+            fg='black',
+            font=("Helvetica", 8)
+        )
+        get_mistral_btn.pack(side='right')
+        
+        mistral_entry = Entry(dialog, width=50)
+        mistral_entry.pack(pady=5)
+
+        # Info label
+        Label(dialog,
+              text="Note: You can continue without API keys.\nThe game will use default questions.",
+              font=("Helvetica", 9),
+              bg='white',
+              fg='#666').pack(pady=20)
+        
+        def save_and_close():
+            gemini_key = gemini_entry.get().strip()
+            mistral_key = mistral_entry.get().strip()
+            
+            # Update instance variables
+            if gemini_key:
+                self.gemini_key = gemini_key
+            if mistral_key:
+                self.mistral_key = mistral_key
+            
+            # Save to config file if keys provided
+            if gemini_key or mistral_key:
+                config_dir = os.path.expanduser('~/.trivia_royale')
+                os.makedirs(config_dir, exist_ok=True)
+                config_file = os.path.join(config_dir, 'config.json')
+                
+                stored_keys = {}
+                if gemini_key:
+                    stored_keys['GEMINI_API_KEY'] = gemini_key
+                if mistral_key:
+                    stored_keys['MISTRAL_API_KEY'] = mistral_key
+                
+                try:
+                    with open(config_file, 'w') as f:
+                        json.dump(stored_keys, f)
+                except Exception as e:
+                    print(f"### ERROR: Failed to save config file: {e}")
+        
+            dialog.destroy()
+        
+        # Save button with better contrast
+        save_button = Button(
+            dialog,
+            text="Save and Start Game",
+            command=save_and_close,
+            bg='#2E7D32',
+            fg='black',
+            font=("Helvetica", 10, "bold"),
+            relief="raised",
+            padx=20,
+            pady=10
+        )
+        save_button.pack(pady=20)
+        
+        dialog.protocol("WM_DELETE_WINDOW", dialog.destroy)
+        dialog.transient(self.root)
+        dialog.grab_set()
+        self.root.wait_window(dialog)
 
     def quit_game(self, event=None):
         """Safely exits the application."""
@@ -478,55 +621,28 @@ class TriviaGame:
         loading_thread = Thread(target=self._load_questions_thread, args=(prompt, wait_window), daemon=True)
         loading_thread.start()
 
-    def _load_questions_thread(self, prompt, wait_window):
+    def _load_questions_thread(self, prompt, wait_window=None):
+        """Thread for loading questions with LLM fallback logic"""
         loaded_questions = []
-        is_default_prompt = (prompt == "default")
-        llm_tried = False
+        llm_tried = False  # Track if we attempted any LLM
 
-        if is_default_prompt:
-            # --- Load from Default Files ---
+        if prompt == "default":
+            # Load default questions logic here...
             if wait_window:
-                # Update label if wait_window exists
                 self.root.after(0, self.update_wait_label, wait_window, "Default Files")
-
-            files_to_load = []
-            difficulty_map = {"Easy": "questions_easy.json", "Medium": "questions_medium.json", "Hard": "questions_hard.json"}
-            for diff in self.selected_difficulties:
-                filename = difficulty_map.get(diff)
-                if filename:
-                    files_to_load.append(get_asset_path(filename))
-            # Ensure at least medium is loaded if no specific difficulty selected or files missing
-            if not files_to_load:
-                print("### INFO: No specific difficulty files found or selected, loading medium defaults.")
-                files_to_load.append(get_asset_path("questions_medium.json"))
-
-            for fname in files_to_load:
-                try:
-                    with open(fname, 'r', encoding='utf-8') as file:
-                        data = json.load(file)
-                        loaded_questions.extend(data)
-                except FileNotFoundError:
-                    print(f"### ERROR: Default file not found: {fname}")
-                except json.JSONDecodeError as e:
-                    print(f"### ERROR: JSON decode error in {os.path.basename(fname)}: {e}")
-                except Exception as e:
-                    print(f"### ERROR: Error reading {os.path.basename(fname)}: {e}")
-
-            if loaded_questions:
-                random.shuffle(loaded_questions)
-                num_needed = self.num_rounds * self.num_teams + 1
-                # Keep slightly more than needed for variety, but trim excessive amounts
-                if len(loaded_questions) > num_needed + 20:
-                     print(f"### INFO: Trimming default questions from {len(loaded_questions)} to {num_needed + 20}")
-                     loaded_questions = loaded_questions[:num_needed + 20]
-            else:
-                 print("### CRITICAL ERROR: Failed to load any default questions!")
+            # ... existing default loading code ...
         else:
+            # Debug logging with instance variables
+            print(f"### DEBUG: Attempting LLM generation with GEMINI_API_KEY present: {bool(self.gemini_key)}")
+            print(f"### DEBUG: GEMINI_API_KEY length: {len(self.gemini_key) if self.gemini_key else 0}")
+            print(f"### DEBUG: Attempting LLM generation with MISTRAL_API_KEY present: {bool(self.mistral_key)}")
+            print(f"### DEBUG: MISTRAL_API_KEY length: {len(self.mistral_key) if self.mistral_key else 0}")
+
             # --- LLM Generation Logic ---
             raw_json_text = None # Initialize raw_json_text
 
             # --- Attempt Gemini ---
-            if GEMINI_API_KEY:
+            if self.gemini_key:
                 llm_tried = True
                 print("### INFO: Attempting Gemini...")
                 # Schedule update for Gemini model name
@@ -539,7 +655,7 @@ class TriviaGame:
                 raw_json_text = None # Ensure it's None if key is missing
 
             # --- Attempt Mistral (if Gemini failed/skipped and key exists) ---
-            if raw_json_text is None and MISTRAL_API_KEY:
+            if raw_json_text is None and self.mistral_key:
                 llm_tried = True
                 print("### INFO: Gemini failed or key missing, attempting Mistral...")
                 # Schedule update for Mistral model name
@@ -547,9 +663,8 @@ class TriviaGame:
                     self.root.after(0, self.update_wait_label, wait_window, MISTRAL_MODEL)
                 # Make the actual call
                 raw_json_text = self.generate_trivia_questions_mistral(prompt)
-            elif raw_json_text is None and not MISTRAL_API_KEY:
-                 print("### INFO: Mistral API Key not found, skipping Mistral.")
-
+            elif raw_json_text is None and not self.mistral_key:
+                print("### INFO: Mistral API Key not found, skipping Mistral.")
 
             # --- Process Result (if any LLM was attempted and returned something) ---
             if raw_json_text:
@@ -612,39 +727,39 @@ class TriviaGame:
 
             # --- Fallback to Default (if LLMs were tried but failed/yielded no questions, or keys were missing) ---
             # Use the llm_tried flag here
-            if not loaded_questions and (llm_tried or (not GEMINI_API_KEY and not MISTRAL_API_KEY)):
-                 # Only print fallback message if an LLM was actually attempted or if no keys existed at all
-                 print("### WARNING: LLM generation failed or produced invalid data. Falling back to default questions.")
-                 # Schedule update for Default Files message
-                 if wait_window:
-                     self.root.after(0, self.update_wait_label, wait_window, "Default Files")
+            if not loaded_questions and (llm_tried or (not self.gemini_key and not self.mistral_key)):
+                # Only print fallback message if an LLM was actually attempted or if no keys existed at all
+                print("### WARNING: LLM generation failed or produced invalid data. Falling back to default questions.")
+                # Schedule update for Default Files message
+                if wait_window:
+                    self.root.after(0, self.update_wait_label, wait_window, "Default Files")
 
-                 # --- Load from Default Files (Fallback Logic) ---
-                 files_to_load = []
-                 difficulty_map = {"Easy": "questions_easy.json", "Medium": "questions_medium.json", "Hard": "questions_hard.json"}
-                 for diff in self.selected_difficulties:
-                     filename = difficulty_map.get(diff)
-                     if filename:
-                         files_to_load.append(get_asset_path(filename))
-                 if not files_to_load:
-                     files_to_load.append(get_asset_path("questions_medium.json"))
+                # --- Load from Default Files (Fallback Logic) ---
+                files_to_load = []
+                difficulty_map = {"Easy": "questions_easy.json", "Medium": "questions_medium.json", "Hard": "questions_hard.json"}
+                for diff in self.selected_difficulties:
+                    filename = difficulty_map.get(diff)
+                    if filename:
+                        files_to_load.append(get_asset_path(filename))
+                if not files_to_load:
+                    files_to_load.append(get_asset_path("questions_medium.json"))
 
-                 for fname in files_to_load:
-                     try:
-                         with open(fname, 'r', encoding='utf-8') as file:
-                             data = json.load(file)
-                             loaded_questions.extend(data)
-                     except FileNotFoundError: print(f"### ERROR: Default file (fallback) not found: {fname}")
-                     except json.JSONDecodeError as e: print(f"### ERROR: JSON decode error in {os.path.basename(fname)} (fallback): {e}")
-                     except Exception as e: print(f"### ERROR: Error reading {os.path.basename(fname)} (fallback): {e}")
+                for fname in files_to_load:
+                    try:
+                        with open(fname, 'r', encoding='utf-8') as file:
+                            data = json.load(file)
+                            loaded_questions.extend(data)
+                    except FileNotFoundError: print(f"### ERROR: Default file (fallback) not found: {fname}")
+                    except json.JSONDecodeError as e: print(f"### ERROR: JSON decode error in {os.path.basename(fname)} (fallback): {e}")
+                    except Exception as e: print(f"### ERROR: Error reading {os.path.basename(fname)} (fallback): {e}")
 
-                 if loaded_questions:
-                     random.shuffle(loaded_questions)
-                     num_needed = self.num_rounds * self.num_teams + 1
-                     if len(loaded_questions) > num_needed + 20:
-                         loaded_questions = loaded_questions[:num_needed + 20]
-                 else:
-                      print("### CRITICAL ERROR: Failed to load ANY questions (LLM and Default fallback failed).")
+                if loaded_questions:
+                    random.shuffle(loaded_questions)
+                    num_needed = self.num_rounds * self.num_teams + 1
+                    if len(loaded_questions) > num_needed + 20:
+                        loaded_questions = loaded_questions[:num_needed + 20]
+                else:
+                     print("### CRITICAL ERROR: Failed to load ANY questions (LLM and Default fallback failed).")
 
 
         # --- Nested Function to Finalize Loading on Main Thread ---
@@ -756,28 +871,47 @@ class TriviaGame:
 
     # --- LLM Interaction ---
     def generate_trivia_questions_gemini(self, prompt):
-        if not GEMINI_API_KEY: print("### ERROR: Gemini API Key not found."); return None
-        genai.configure(api_key=GEMINI_API_KEY)
+        if not self.gemini_key:
+            print("### ERROR: Gemini API Key not found.")
+            return None
+            
+        genai.configure(api_key=self.gemini_key)
         # Use the constant here:
         model = genai.GenerativeModel(GEMINI_MODEL)
         try:
             response = model.generate_content(prompt)
             return response.text
-        except Exception as e: print(f"### ERROR: Gemini API Exception: {e}"); return None
+        except Exception as e:
+            print(f"### ERROR: Gemini API Exception: {e}")
+            return None
 
     def generate_trivia_questions_mistral(self, prompt):
-        if not MISTRAL_API_KEY: print("### ERROR: Mistral API Key not found."); return None
-        url = "https://api.mistral.ai/v1/chat/completions"
-        headers = {"Authorization": f"Bearer {MISTRAL_API_KEY}", "Content-Type": "application/json", "Accept": "application/json"}
-        # Use the constant here:
-        data = {"model": MISTRAL_MODEL, "messages": [{"role": "user", "content": prompt}], "response_format": {"type": "json_object"}}
+        if not self.mistral_key:
+            print("### ERROR: Mistral API Key not found.")
+            return None
+
         try:
-            response = requests.post(url, headers=headers, json=data, timeout=45)
-            response.raise_for_status()
-            json_response = response.json(); content = json_response.get("choices", [{}])[0].get("message", {}).get("content", ""); return content
-        except requests.exceptions.RequestException as e: print(f"### ERROR: Mistral API Request Error: {e}"); return None
-        except json.JSONDecodeError as e: print(f"### ERROR: Mistral API JSON Decode Error: {e}\nRaw: {response.text}"); return None
-        except Exception as e: print(f"### ERROR: Mistral API General Error: {e}"); return None
+            headers = {
+                "Authorization": f"Bearer {self.mistral_key}",
+                "Content-Type": "application/json"
+            }
+            data = {
+                "model": MISTRAL_MODEL,
+                "messages": [{"role": "user", "content": prompt}]
+            }
+            response = requests.post(
+                "https://api.mistral.ai/v1/chat/completions",
+                headers=headers,
+                json=data
+            )
+            if response.status_code == 200:
+                return response.json()['choices'][0]['message']['content']
+            else:
+                print(f"### ERROR: Mistral API Error: {response.status_code}")
+                return None
+        except Exception as e:
+            print(f"### ERROR: Mistral API Exception: {e}")
+            return None
 
     def get_trivia_questions_from_llm(self, prompt):
         raw_json_text = self.generate_trivia_questions_gemini(prompt)

@@ -17,3 +17,6 @@ pyperclip>=1.8.2
 black>=23.0.0
 flake8>=6.0.0
 pytest>=7.0.0
+
+# Add PyInstaller to existing requirements.txt
+pyinstaller>=6.3.0
