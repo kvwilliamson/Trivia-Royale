@@ -20,3 +20,5 @@ pytest>=7.0.0
 
 # Add PyInstaller to existing requirements.txt
 pyinstaller>=6.3.0
+
+streamlit>=1.31.0

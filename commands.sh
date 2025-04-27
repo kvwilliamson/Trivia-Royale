@@ -1,12 +1,23 @@
-# Remove the zip file from git history
-git filter-branch --force --index-filter \
-  "git rm --cached --ignore-unmatch TriviaRoyale-darwin-20250425.zip" \
-  --prune-empty --tag-name-filter cat -- --all
+# Create a backup branch just in case
+git branch backup-main
 
-# Clean up the refs and garbage collect
-git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+# Remove the file from git history (more aggressive approach)
+git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch TriviaRoyale-darwin-20250425.zip' HEAD
+
+# Remove the original refs
+rm -rf .git/refs/original/
+
+# Remove the filter-branch backup
+rm -rf .git/refs/original/
+
+# Expire all reflogs
 git reflog expire --expire=now --all
-git gc --prune=now
 
-# Force push the changes
-git push origin main --force
+# Aggressively garbage collect
+git gc --prune=now --aggressive
+
+# Force push with lease (safer than plain force push)
+git push origin main --force-with-lease
+
+# List files in the repository
+git ls-files | grep TriviaRoyale-darwin
