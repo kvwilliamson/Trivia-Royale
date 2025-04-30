@@ -29,7 +29,7 @@ jobs:
       run: |
         set -e  # Exit on error
         sudo apt-get update
-        sudo apt-get install -y python3.11-tk
+        sudo apt-get install -y python3-tk
         python -c "import tkinter; print(tkinter)"  # Verify tkinter installation
 
     - name: Install dependencies
