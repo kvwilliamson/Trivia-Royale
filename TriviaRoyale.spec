@@ -1,40 +1,25 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-block_cipher = None
 
 a = Analysis(
     ['TriviaRoyale.py'],
     pathex=[],
     binaries=[],
-    datas=[
-        ('assets/*', 'assets'),  # assets directory
-        ('.env', '.'),  # Add this line to include .env file
-    ],
-    hiddenimports=[
-        'google.generativeai',
-        'mistralai',
-        'pyttsx3.drivers',
-        'pyttsx3.drivers.nsss',  # for macOS
-        'pyttsx3.drivers.sapi5',  # for Windows
-        'pyttsx3.drivers.espeak'  # for Linux
-    ],
+    datas=[('assets', 'assets')],
+    hiddenimports=['google.generativeai', 'mistralai', 'pyttsx3.drivers', 'pyttsx3.drivers.sapi5'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
-    cipher=block_cipher,
     noarchive=False,
+    optimize=0,
 )
-
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
     a.scripts,
     a.binaries,
-    a.zipfiles,
     a.datas,
     [],
     name='TriviaRoyale',
@@ -44,14 +29,16 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,  # Keep True for debugging during development
-    icon='assets/icon.ico' if os.path.exists('assets/icon.ico') else None
+    console=False,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
 )
-
-# For macOS, create an app bundle
 app = BUNDLE(
     exe,
     name='TriviaRoyale.app',
-    icon='assets/icon.ico' if os.path.exists('assets/icon.ico') else None,
-    bundle_identifier='com.trivia.royale'
+    icon=None,
+    bundle_identifier=None,
 )
