@@ -2,6 +2,9 @@ name: Build Windows Executable
 
 on:
   workflow_dispatch:  # Allows manual triggering
+  push:
+    tags:
+      - 'v*'  # Run when a version tag is pushed
 
 jobs:
   build:
@@ -9,12 +12,12 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.11'  # Using 3.11 as in your project
+        python-version: '3.11'
     
     - name: Install dependencies
       run: |
@@ -24,10 +27,40 @@ jobs:
     
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --add-data "assets;assets" --hidden-import google.generativeai --hidden-import mistralai --hidden-import pyttsx3.drivers --hidden-import pyttsx3.drivers.sapi5 TriviaRoyale.py
+        pyinstaller --onefile --windowed --add-data "assets;assets" --icon="assets/icon.ico" --name="TriviaRoyale" --hidden-import=google.generativeai --hidden-import=mistralai --hidden-import=pyttsx3.drivers --hidden-import=pyttsx3.drivers.sapi5 TriviaRoyale.py
     
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
+    - name: Create version info
+      run: |
+        $version = if ($env:GITHUB_REF -match "refs/tags/v(.+)") { $matches[1] } else { "dev-$(Get-Date -Format 'yyyyMMdd')" }
+        echo "Version: $version" > dist/version.txt
+        echo "Build date: $(Get-Date -Format 'yyyy-MM-dd HH:mm')" >> dist/version.txt
+        echo "Commit: $env:GITHUB_SHA" >> dist/version.txt
+    
+    - name: Create ZIP archive
+      run: |
+        $version = if ($env:GITHUB_REF -match "refs/tags/v(.+)") { $matches[1] } else { "dev-$(Get-Date -Format 'yyyyMMdd')" }
+        $zipName = "TriviaRoyale-windows-$version.zip"
+        Compress-Archive -Path dist/* -DestinationPath $zipName
+    
+    - name: Upload executable artifact
+      uses: actions/upload-artifact@v4
       with:
         name: TriviaRoyale-Windows
         path: dist/TriviaRoyale.exe
+    
+    - name: Upload ZIP artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: TriviaRoyale-Windows-ZIP
+        path: TriviaRoyale-windows-*.zip
+    
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          TriviaRoyale-windows-*.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
