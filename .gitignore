@@ -1,5 +1,7 @@
-# Environment variables
+# Environment variables and secrets
 .env
+.env.*
+config.json
 
 # Python
 __pycache__/
@@ -27,18 +29,44 @@ wheels/
 venv/
 venv311/
 ENV/
+.venv
+.python-version
 
-# IDE
+# IDE and Editor files
 .idea/
 .vscode/
+.qodo/
 *.swp
 *.swo
+*~
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
 
-# OS
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Project-specific
 *.log
+*.bak
 assets/*.bak
 TriviaRoyale-*.zip
+commands.sh
+*.spec
+
+# PyInstaller
+build/
+dist/
+*.manifest
+*.spec
+
+# Temporary files
+tmp/
+temp/

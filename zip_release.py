@@ -8,8 +8,8 @@ def zip_executable():
     # Get current date for version
     date_str = datetime.now().strftime("%Y%m%d")
     
-    # Determine system
-    system = platform.system().lower()
+    # Force Windows naming
+    system = "windows"
     
     # Create zip name with date
     zip_name = f"TriviaRoyale-{system}-{date_str}.zip"
