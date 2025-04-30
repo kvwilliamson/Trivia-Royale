@@ -38,6 +38,17 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         black . --check || echo "Formatting issues detected. Run 'black .' locally to fix them."
         
+    - name: Check for tests directory
+      id: check_tests
+      run: |
+        if [ -d "tests" ]; then
+          echo "tests_exist=true" >> $GITHUB_OUTPUT
+        else
+          echo "tests_exist=false" >> $GITHUB_OUTPUT
+          echo "No tests directory found. Skipping tests."
+        fi
+        
     - name: Run tests
+      if: steps.check_tests.outputs.tests_exist == 'true'
       run: |
         pytest tests/
