@@ -25,9 +25,25 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
     
-    - name: Build with PyInstaller
+    - name: Check for icon file
+      id: check_icon
+      run: |
+        if (Test-Path "assets/icon.ico") {
+          echo "icon_exists=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        } else {
+          echo "icon_exists=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          echo "Icon file not found. Will build without custom icon."
+        }
+    
+    - name: Build with PyInstaller (with icon)
+      if: steps.check_icon.outputs.icon_exists == 'true'
       run: |
         pyinstaller --onefile --windowed --add-data "assets;assets" --icon="assets/icon.ico" --name="TriviaRoyale" --hidden-import=google.generativeai --hidden-import=mistralai --hidden-import=pyttsx3.drivers --hidden-import=pyttsx3.drivers.sapi5 TriviaRoyale.py
+    
+    - name: Build with PyInstaller (without icon)
+      if: steps.check_icon.outputs.icon_exists != 'true'
+      run: |
+        pyinstaller --onefile --windowed --add-data "assets;assets" --name="TriviaRoyale" --hidden-import=google.generativeai --hidden-import=mistralai --hidden-import=pyttsx3.drivers --hidden-import=pyttsx3.drivers.sapi5 TriviaRoyale.py
     
     - name: Create version info
       run: |
