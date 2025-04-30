@@ -1,5 +1,5 @@
 # Core dependencies
-tkinter
+# tkinter  # Removed - this is a standard library module, not pip-installable
 pyttsx3>=2.90
 pygame>=2.5.0
 Pillow>=10.0.0
