@@ -492,6 +492,20 @@ class TriviaGame:
 
         self.root.after(1500, start_sequence)
 
+    def _load_icon_image(self, parent_frame):
+        """Helper to load and display the Trivia Royale icon"""
+        try:
+            icon_path = get_asset_path("TriviaRoyalIcon(2).png")
+            icon_img = Image.open(icon_path)
+            icon_img = icon_img.resize((80, 80), Image.LANCZOS)
+            icon_photo = ImageTk.PhotoImage(icon_img)
+            icon_label = Label(parent_frame, image=icon_photo, bg=COLORS["light_blue"])
+            icon_label.image = icon_photo  # Keep reference
+            icon_label.pack()
+        except Exception as e:
+            # Fallback to crown emoji if image not found
+            Label(parent_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+
     def get_number_of_rounds(self):
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
@@ -499,7 +513,7 @@ class TriviaGame:
         # Title with icon
         title_frame = Frame(self.root, bg=COLORS["light_blue"])
         title_frame.pack(pady=30)
-        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        self._load_icon_image(title_frame)
         Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
         
         # Question
@@ -587,7 +601,7 @@ class TriviaGame:
         # Title with icon
         title_frame = Frame(self.root, bg=COLORS["light_blue"])
         title_frame.pack(pady=30)
-        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        self._load_icon_image(title_frame)
         Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
         
         # Question
@@ -677,7 +691,7 @@ class TriviaGame:
         # Title with icon
         title_frame = Frame(self.root, bg=COLORS["light_blue"])
         title_frame.pack(pady=30)
-        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        self._load_icon_image(title_frame)
         Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
         
         # Instruction
@@ -784,9 +798,15 @@ class TriviaGame:
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
 
-        # Title and instruction labels at top
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=10)
-        Label(self.root, text=f"Select {3 * self.num_teams} Categories Total", font=FONTS["medium"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
+        # Title with icon (restored)
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=10)
+        self._load_icon_image(title_frame)
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+
+        # Instruction labels
+        needed_count = 3 * self.num_teams
+        Label(self.root, text=f"Select {needed_count} Categories Total", font=FONTS["medium"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
         Label(self.root, text="or click 'Use Default'. Double-click 'Other' to customize.", font=FONTS["small"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=(0,10))
 
         # Category selection area
@@ -824,36 +844,37 @@ class TriviaGame:
             self.checkbox_vars.append(var)
             self.checkbox_widgets.append(checkbox)
 
-        # Error label (after categories, before buttons)
-        error_label = Label(self.root, text="", font=FONTS["small"], fg=COLORS["red"], bg=COLORS["light_blue"])
-        error_label.pack(pady=(10, 5))
+        # Error label
+        error_label = Label(self.root, text="", font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"])
+        error_label.pack(side=tk.BOTTOM, pady=(0, 60))
 
-        # Buttons at bottom of screen
+        # Buttons at bottom
         button_outer_frame = Frame(self.root, bg=COLORS["light_blue"])
-        button_outer_frame.pack(side=tk.BOTTOM, pady=20)  # Pack at bottom
-
-        button_inner_frame = Frame(button_outer_frame, bg=COLORS["light_blue"])
-        button_inner_frame.pack()
+        button_outer_frame.pack(side=tk.BOTTOM, pady=20)
 
         def submit_categories():
-            selected_categories_texts = [self.checkbox_widgets[i].cget("text")
-                                    for i, var in enumerate(self.checkbox_vars) if var.get()]
-            needed_count = 3 * self.num_teams
+            selected_categories_texts = [self.checkbox_widgets[index].cget("text")
+                                    for index, val in enumerate(self.checkbox_vars) if val.get()]
             if len(selected_categories_texts) != needed_count:
+                if self.sfx: self.sfx.play('wrong')
                 error_label.config(text=f"Selected {len(selected_categories_texts)}. Please select exactly {needed_count}.")
                 return
-            error_label.config(text="")
+            
+            if self.sfx: self.sfx.play('button_click')
             self.selected_categories = selected_categories_texts
             self.select_difficulty()
             
-        Button(button_inner_frame, text="Use Category Selections", font=FONTS["small"], 
+        Button(button_outer_frame, text="Use Selected Categories", font=FONTS["small"], 
                fg=COLORS["light_blue"], bg=COLORS["dark_teal"], 
                command=submit_categories).pack(side=tk.LEFT, padx=10, pady=5)
         
-        Button(button_inner_frame, text="Use Default Questions", font=FONTS["small"], 
+        Button(button_outer_frame, text="Use Default Questions", font=FONTS["small"], 
                fg=COLORS["light_blue"], bg=COLORS["dark_teal"], 
-               command=lambda: (setattr(self, "selected_categories", ["default"]), 
+               command=lambda: (self.sfx.play('button_click') if self.sfx else None,
+                              setattr(self, "selected_categories", ["default"]), 
                               self.select_difficulty())).pack(side=tk.LEFT, padx=10, pady=5)
+
+
 
     def modify_other_label(self, event, checkbox_index):
         checkbox = self.checkbox_widgets[checkbox_index]
@@ -883,15 +904,107 @@ class TriviaGame:
     def select_difficulty(self):
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
-        Label(self.root, text="Select Difficulty Levels", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=40)
-        Label(self.root, text="(Select at least one, or Medium will be chosen)", font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=(0, 20))
+        
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=30)
+        self._load_icon_image(title_frame)
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
+        # Main question
+        Label(self.root, text="Select Difficulty Levels", 
+              font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Helper text
+        Label(self.root, text="(Choose one or more difficulty levels)", 
+              font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
+        
+        # Difficulty checkboxes with visual indicators
         diff_frame = Frame(self.root, bg=COLORS["light_blue"])
-        diff_frame.pack(pady=20)
+        diff_frame.pack(pady=30)
+        
         self.diff_vars = {"Easy": BooleanVar(), "Medium": BooleanVar(), "Hard": BooleanVar()}
+        
+        difficulty_info = {
+            "Easy": ("⭐", "Basic questions"),
+            "Medium": ("⭐⭐", "Moderate challenge"),
+            "Hard": ("⭐⭐⭐", "Expert level")
+        }
+        
         for i, (level, var) in enumerate(self.diff_vars.items()):
-             Checkbutton(diff_frame, text=level, variable=var, font=FONTS["medium_bold"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"], selectcolor=COLORS["black"], activebackground=COLORS["light_blue"], activeforeground=COLORS["soft_coral"], padx=20, pady=10).grid(row=0, column=i, padx=15, pady=10)
-        # ### STYLE CHANGE: Use FONTS["small"] for consistency ###
-        Button(self.root, text="Continue", font=FONTS["small"], fg=COLORS["light_blue"], bg=COLORS["dark_teal"], command=self.process_difficulty_selection).pack(pady=40)
+            # Container for each difficulty option
+            container = Frame(diff_frame, bg=COLORS["light_blue"])
+            container.grid(row=0, column=i, padx=20, pady=10)
+            
+            # Stars and label
+            stars, description = difficulty_info[level]
+            Label(container, text=stars, font=("Helvetica", 24), 
+                  bg=COLORS["light_blue"]).pack()
+            
+            # Checkbox with better styling
+            cb = Checkbutton(container, text=level, variable=var, 
+                            font=("Helvetica", 18, "bold"), 
+                            fg=COLORS["soft_yellow"], 
+                            bg=COLORS["light_blue"], 
+                            selectcolor=COLORS["dark_teal"], 
+                            activebackground=COLORS["light_blue"], 
+                            activeforeground=COLORS["soft_coral"],
+                            padx=15, pady=10,
+                            command=lambda: self.sfx.play('button_click') if self.sfx else None)
+            cb.pack()
+            
+            # Description
+            Label(container, text=description, font=FONTS["xsmall"],
+                  fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack()
+        
+        # Quick preset buttons
+        Label(self.root, text="Quick Presets:", font=FONTS["small"], 
+              fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
+        
+        preset_frame = Frame(self.root, bg=COLORS["light_blue"])
+        preset_frame.pack()
+        
+        def apply_preset(preset_name, levels):
+            if self.sfx:
+                self.sfx.play('button_click')
+            # Clear all
+            for var in self.diff_vars.values():
+                var.set(False)
+            # Set selected
+            for level in levels:
+                self.diff_vars[level].set(True)
+        
+        presets = [
+            ("Beginner Friendly", ["Easy"]),
+            ("Balanced Mix", ["Easy", "Medium", "Hard"]),
+            ("Challenge Mode", ["Hard"])
+        ]
+        
+        for name, levels in presets:
+            btn = Button(preset_frame, text=name, 
+                        font=("Helvetica", 14, "bold"),
+                        bg=COLORS["dark_teal"], fg=COLORS["light_blue"],
+                        activebackground=COLORS["soft_coral"],
+                        activeforeground=COLORS["light_blue"],
+                        padx=15, pady=8, bd=0,
+                        command=lambda l=levels: apply_preset(name, l),
+                        cursor="hand2")
+            btn.pack(side=tk.LEFT, padx=5)
+        
+        # Continue button
+        def continue_click():
+            if self.sfx:
+                self.sfx.play('button_click')
+            self.process_difficulty_selection()
+        
+        Button(self.root, text="Continue", 
+               font=("Helvetica", 18, "bold"), 
+               fg=COLORS["light_blue"], 
+               bg=COLORS["dark_teal"],
+               activebackground=COLORS["soft_coral"],
+               padx=30, pady=12, bd=0,
+               command=continue_click,
+               cursor="hand2").pack(pady=40)
 
     def process_difficulty_selection(self):
         selected_difficulties = [level for level, var in self.diff_vars.items() if var.get()]
@@ -1237,77 +1350,79 @@ class TriviaGame:
             except Exception as e: print(f"### ERROR: Error processing LLM response: {e}"); return None
         else: print("### ERROR: Both LLMs failed."); return None
 
-     # --- Text-to-Speech (SYNCHRONOUS VERSION) ---
+     # --- Text-to-Speech (IMPROVED WITH gTTS) ---
     def speak_text(self, text):
-        """Speak text using pyttsx3 - SYNCHRONOUSLY on the main thread."""
+        """Speak text using gTTS (Google Text-to-Speech) for high-quality natural voice."""
         if not text:
             return
 
+        try:
+            from gtts import gTTS
+            import tempfile
+            
+            # Create temporary file for audio
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.mp3') as fp:
+                temp_file = fp.name
+            
+            # Generate speech using Google's TTS (much more natural than pyttsx3)
+            tts = gTTS(text=text, lang='en', slow=False)
+            tts.save(temp_file)
+            
+            # Play the audio using pygame
+            try:
+                pygame.mixer.music.load(temp_file)
+                pygame.mixer.music.play()
+                
+                # Wait for playback to finish
+                while pygame.mixer.music.get_busy():
+                    pygame.time.Clock().tick(10)
+                    
+            finally:
+                # Clean up temporary file
+                try:
+                    os.remove(temp_file)
+                except:
+                    pass
+                    
+        except ImportError:
+            print("### WARNING: gTTS not available, falling back to pyttsx3")
+            self._speak_text_fallback(text)
+        except Exception as e:
+            print(f"### ERROR: gTTS failed ({e}), falling back to pyttsx3")
+            self._speak_text_fallback(text)
+    
+    def _speak_text_fallback(self, text):
+        """Fallback TTS using pyttsx3 if gTTS fails."""
         engine = None
         try:
-            # --- Initialize with macOS driver if possible ---
             try:
-                # Try the specific macOS driver first
                 engine = pyttsx3.init(driverName='nsss')
             except Exception:
-                # Fallback to default if nsss fails or isn't needed
-                print("### INFO: Failed to init TTS with 'nsss' driver, using default.")
                 engine = pyttsx3.init()
-            # -----------------------------------------------
-
+            
             try:
                 voices = engine.getProperty('voices')
-                if not voices:
-                     print("### ERROR: pyttsx3 engine initialized but no voices found.")
-                     if engine: del engine # Cleanup
-                     return
-
-                # --- SET THE DESIRED VOICE (DANIEL for macOS) ---
-                # Use the EXACT ID you found using the sample_voices script.
-                # The standard ID for Daniel on macOS is usually this:
-                desired_voice_id = "com.apple.speech.synthesis.voice.daniel"
-                # If your sampling script showed a slightly different ID for Daniel, use that exact one here.
-
-                try:
-                    engine.setProperty('voice', desired_voice_id)
-                    print(f"### INFO: Attempting to set TTS voice to: Daniel (ID: {desired_voice_id})") # Optional confirmation
-                except Exception as set_voice_error:
-                    # If setting the voice fails, print a warning but continue with the default voice.
-                    print(f"### WARNING: Could not set desired voice ID '{desired_voice_id}': {set_voice_error}")
-                    print("### WARNING: Using default system voice instead.")
-                # -------------------------------------------------
-
-            except Exception as get_voices_err:
-                 # This error is more critical - if we can't list voices, we probably can't set one either.
-                 print(f"### ERROR: Failed to get voices property from pyttsx3 engine: {get_voices_err}")
-                 if engine: del engine # Cleanup
-                 return
-
-            # Set other properties (rate, volume) AFTER setting the voice potentially
-            engine.setProperty('rate', 150) # You can adjust rate (words per minute)
-            engine.setProperty('volume', 0.9) # Adjust volume (0.0 to 1.0)
-
-            # Speak the text
+                if voices:
+                    # Try to use Samantha (better than Daniel)
+                    desired_voice_id = "com.apple.speech.synthesis.voice.samantha"
+                    try:
+                        engine.setProperty('voice', desired_voice_id)
+                    except:
+                        pass  # Use default if not available
+            except:
+                pass
+            
+            engine.setProperty('rate', 150)
+            engine.setProperty('volume', 0.9)
             engine.say(text)
-            engine.runAndWait() # Blocks until speaking is finished
-
-        except RuntimeError as rt_err:
-            # Handles errors during engine.say() or runAndWait()
-            print(f"### ERROR: TTS runtime error occurred: {rt_err}")
-            # Attempt a clean stop even on runtime error
-            if engine is not None:
-                try: engine.stop()
-                except: pass
+            engine.runAndWait()
+            
         except Exception as e:
-            # Catch any other unexpected errors during TTS operation
-            print(f"### ERROR: General TTS exception during speak_text: {e}")
+            print(f"### ERROR: Fallback TTS also failed: {e}")
         finally:
-            # Ensure engine resources are released.
-            # runAndWait should handle stopping the loop, but explicit deletion
-            # can sometimes help with resource cleanup, especially in complex apps.
             if engine is not None:
-                # engine.stop() # Usually not needed after runAndWait
-                del engine # Suggest garbage collection
+                del engine
+
 
     # --- Music Control ---
     def stop_music(self):
@@ -1343,11 +1458,11 @@ class TriviaGame:
 
     def play_thinking_theme(self):
         random_number = random.randint(1, 7)
-        theme_file = f"TQ_music_{random_number}.mp3"
+        theme_file = f"audio/TQ_music_{random_number}.mp3"
         self.play_music(theme_file, loops=-1)
 
     def play_winner_music(self):
-        self.play_music("TriviaChampion.mp3", loops=0)
+        self.play_music("audio/TriviaChampion.mp3", loops=0)
 
     # --- Game Flow ---
     def game_play(self):
@@ -1359,13 +1474,52 @@ class TriviaGame:
         self.show_question()
 
     def display_scoreboard(self):
-        score_frame = Frame(self.root, bg=COLORS["light_blue"], relief=tk.RIDGE, bd=2)
-        score_frame.pack(pady=10, padx=20, fill=tk.X)
+        """Displays a polished scoreboard at the top of the game screen."""
+        score_container = Frame(self.root, bg=COLORS["dark_teal"], padx=2, pady=2)
+        score_container.pack(pady=10, padx=40, fill=tk.X)
+        
+        score_frame = Frame(score_container, bg=COLORS["light_blue"], padx=10, pady=5)
+        score_frame.pack(fill=tk.X)
+        
         for i, (name, score) in enumerate(zip(self.team_names, self.scores)):
-            fg_color = COLORS["soft_coral"] # All teams use soft_coral
-            font_style = FONTS["medium_bold"]
-            Label(score_frame, text=f"{name}: {score}", font=font_style, fg=fg_color, bg=COLORS["light_blue"]).pack(side=tk.LEFT, expand=True, padx=5)
-        return score_frame
+            team_container = Frame(score_frame, bg=COLORS["light_blue"])
+            team_container.pack(side=tk.LEFT, expand=True, padx=10)
+            
+            # Highlight current team
+            is_current = (i == self.current_team)
+            fg_color = COLORS["soft_yellow"] if is_current else COLORS["soft_coral"]
+            font_style = ("Helvetica", 14, "bold") if not is_current else ("Helvetica", 16, "bold")
+            
+            Label(team_container, text=f"{name}", font=font_style, fg=fg_color, bg=COLORS["light_blue"]).pack(side=tk.TOP)
+            Label(team_container, text=f"{score} pts", font=("Helvetica", 18, "bold"), fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(side=tk.TOP)
+        return score_container
+
+    def show_progress_bar(self):
+        """Displays a visual progress bar indicating game completion."""
+        if self.num_rounds == 0: return
+        
+        progress_container = Frame(self.root, bg=COLORS["light_blue"])
+        progress_container.pack(fill=tk.X, padx=100, pady=(0, 20))
+        
+        # Calculate progress Percentage (total rounds * total teams)
+        total_questions = self.num_rounds * self.num_teams
+        current_question_num = ((self.current_round - 1) * self.num_teams) + self.current_team + 1
+        progress_percent = min(1.0, current_question_num / total_questions) if total_questions > 0 else 0
+        
+        # Background bar
+        bar_bg = Frame(progress_container, bg=COLORS["dark_teal"], height=10)
+        bar_bg.pack(fill=tk.X, pady=5)
+        bar_bg.pack_propagate(False)
+        
+        # Foreground bar (filled)
+        bar_fg = Frame(bar_bg, bg=COLORS["soft_yellow"], height=10)
+        bar_fg.place(relx=0, rely=0, relwidth=progress_percent)
+        
+        # Text indicator
+        Label(progress_container, 
+              text=f"Question {current_question_num} of {total_questions}", 
+              font=FONTS["xsmall"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack()
+
 
     # Callback function for root.after (for UI updates/key bindings)
     def setup_reveal_prompt(self):
@@ -1399,13 +1553,24 @@ class TriviaGame:
             self.determine_final_round_or_winner(); return
 
         self.clear_screen(); self.root.configure(bg=COLORS["light_blue"])
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=(10, 5))
+        self._load_icon_image(title_frame)
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
         self.display_scoreboard()
+        self.show_progress_bar()
 
         if self.current_round > self.num_rounds:
              self.final_question_round(); return
 
-        Label(self.root, text=f"Round {self.current_round}/{self.num_rounds} - Team: {self.team_names[self.current_team]}", font=FONTS["big_italic"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=40)
+        # Current Turn Indicator
+        turn_frame = Frame(self.root, bg=COLORS["dark_teal"], padx=2, pady=2)
+        turn_frame.pack(pady=10)
+        Label(turn_frame, text=f" Round {self.current_round}/{self.num_rounds} • {self.team_names[self.current_team]}'s Turn ", 
+              font=FONTS["big_italic"], fg=COLORS["light_blue"], bg=COLORS["dark_teal"]).pack()
 
         if self.question_index < len(self.questions):
             current_q_data = self.questions[self.question_index]
@@ -1414,8 +1579,11 @@ class TriviaGame:
             print("### ERROR: question_index out of bounds in show_question!")
             self.determine_final_round_or_winner(); return
 
-        question_label = Label(self.root, text=current_question, font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"], wraplength=self.root.winfo_screenwidth() * 0.7)
-        question_label.pack(pady=20)
+        # Question text with better spacing
+        question_label = Label(self.root, text=current_question, 
+                               font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"], 
+                               wraplength=self.root.winfo_screenwidth() * 0.8, justify="center")
+        question_label.pack(pady=30)
 
         # Trigger TTS Synchronously via root.after
         tts_delay_ms = 10
@@ -1423,7 +1591,7 @@ class TriviaGame:
 
         # UI Update / Key Binding Setup
         self.reveal_prompt_label = Label(self.root, text="", font=FONTS["medium_bold"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"])
-        self.reveal_prompt_label.pack(pady=60)
+        self.reveal_prompt_label.pack(pady=40)
 
         # Schedule the UI update/bindings using a SEPARATE `after` call
         ui_setup_delay_ms = 2500
@@ -1453,11 +1621,29 @@ class TriviaGame:
 
     def show_answer(self, question_text, answer_text):
         self.clear_screen(); self.root.configure(bg=COLORS["light_blue"])
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=(10, 5))
+        self._load_icon_image(title_frame)
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
         self.display_scoreboard()
+        self.show_progress_bar()
+
         Label(self.root, text="Answer", font=FONTS["big_italic"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=40)
-        answer_label = Label(self.root, text=answer_text, font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"], wraplength=self.root.winfo_screenwidth() * 0.7)
-        answer_label.pack(pady=20)
+        
+        # Answer container for emphasis
+        answer_container = Frame(self.root, bg=COLORS["dark_teal"], padx=3, pady=3)
+        answer_container.pack(pady=20)
+        
+        answer_label = Label(answer_container, text=answer_text, 
+                             font=("Helvetica", 28, "bold"), 
+                             fg=COLORS["soft_yellow"], bg=COLORS["light_blue"], 
+                             wraplength=self.root.winfo_screenwidth() * 0.8,
+                             padx=40, pady=20)
+        answer_label.pack()
+
 
         # Trigger Answer TTS Synchronously via root.after
         tts_delay_ms = 10
@@ -1553,12 +1739,16 @@ class TriviaGame:
         self.display_title_and_scoreboard()
         Label(self.root, text="Final Question Round!", font=FONTS["large"], bg=COLORS["light_blue"], fg=COLORS["soft_coral"]).pack(pady=20)
         Label(self.root, text="Teams, prepare your wagers.", font=FONTS["medium"], bg=COLORS["light_blue"], fg=COLORS["soft_yellow"]).pack(pady=10)
-        self.play_music("FinalQuestionRound.mp3", loops=-1)
+        self.play_music("audio/FinalQuestionRound.mp3", loops=-1)
         self.wagers = {}; self.collecting_wagers = True
         self.collect_wager_for_team(0)
 
     def display_title_and_scoreboard(self):
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        """Displays consistent title with icon and scoreboard."""
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=(10, 5))
+        self._load_icon_image(title_frame)
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
         self.display_scoreboard()
 
     def collect_wager_for_team(self, team_index):

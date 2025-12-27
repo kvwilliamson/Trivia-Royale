@@ -16,6 +16,9 @@ pyperclip>=1.8.2
 # Audio processing (for sound generation script)
 scipy>=1.10.0
 
+# Text-to-Speech (high quality)
+gTTS>=2.5.0
+
 # Development tools
 black>=23.0.0
 flake8>=6.0.0
