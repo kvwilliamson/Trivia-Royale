@@ -48,6 +48,121 @@ def get_asset_path(relative_path):
     return full_path
 
 
+# --- Sound Effect Manager ---
+class SoundEffectManager:
+    """Manages loading and playing sound effects"""
+    def __init__(self):
+        self.sounds = {}
+        self.enabled = True
+        self.volume = 0.7
+        self._load_sounds()
+    
+    def _load_sounds(self):
+        """Load all sound effects"""
+        sound_files = {
+            'button_click': 'audio/sfx/button_click.wav',
+            'correct': 'audio/sfx/correct_answer.wav',
+            'wrong': 'audio/sfx/wrong_answer.wav',
+            'round_transition': 'audio/sfx/round_transition.wav',
+            'achievement': 'audio/sfx/achievement.wav',
+            'score_change': 'audio/sfx/score_change.wav',
+            'timer_tick': 'audio/sfx/timer_tick.wav',
+            'timer_warning': 'audio/sfx/timer_warning.wav',
+        }
+        
+        for name, path in sound_files.items():
+            try:
+                full_path = get_asset_path(path)
+                if os.path.exists(full_path):
+                    sound = pygame.mixer.Sound(full_path)
+                    sound.set_volume(self.volume)
+                    self.sounds[name] = sound
+                else:
+                    print(f"### WARNING: Sound effect not found: {path}")
+            except Exception as e:
+                print(f"### ERROR: Failed to load sound {name}: {e}")
+    
+    def play(self, sound_name):
+        """Play a sound effect by name"""
+        if self.enabled and sound_name in self.sounds:
+            try:
+                self.sounds[sound_name].play()
+            except Exception as e:
+                print(f"### ERROR: Failed to play sound {sound_name}: {e}")
+    
+    def set_volume(self, volume):
+        """Set volume for all sound effects (0.0 to 1.0)"""
+        self.volume = max(0.0, min(1.0, volume))
+        for sound in self.sounds.values():
+            sound.set_volume(self.volume)
+    
+    def toggle(self):
+        """Toggle sound effects on/off"""
+        self.enabled = not self.enabled
+        return self.enabled
+
+
+# --- Visual Feedback Animator ---
+class FeedbackAnimator:
+    """Handles visual feedback animations"""
+    def __init__(self, root):
+        self.root = root
+        self.current_feedback = None
+        self.checkmark_image = None
+        self.x_mark_image = None
+        self._load_images()
+    
+    def _load_images(self):
+        """Load checkmark and X mark images"""
+        try:
+            check_path = get_asset_path('images/ui/checkmark.png')
+            if os.path.exists(check_path):
+                img = Image.open(check_path)
+                img = img.resize((100, 100), Image.LANCZOS)
+                self.checkmark_image = ImageTk.PhotoImage(img)
+            
+            x_path = get_asset_path('images/ui/x_mark.png')
+            if os.path.exists(x_path):
+                img = Image.open(x_path)
+                img = img.resize((100, 100), Image.LANCZOS)
+                self.x_mark_image = ImageTk.PhotoImage(img)
+        except Exception as e:
+            print(f"### ERROR: Failed to load feedback images: {e}")
+    
+    def show_feedback(self, is_correct, parent_widget=None):
+        """Show checkmark or X mark with fade-in animation"""
+        if parent_widget is None:
+            parent_widget = self.root
+        
+        # Clear any existing feedback
+        if self.current_feedback and self.current_feedback.winfo_exists():
+            self.current_feedback.destroy()
+        
+        # Choose image
+        image = self.checkmark_image if is_correct else self.x_mark_image
+        if not image:
+            return  # Images not loaded
+        
+        # Create label with image
+        feedback_label = Label(parent_widget, image=image, bg=COLORS["light_blue"], borderwidth=0)
+        feedback_label.image = image  # Keep reference
+        feedback_label.place(relx=0.5, rely=0.5, anchor='center')
+        
+        self.current_feedback = feedback_label
+        
+        # Auto-dismiss after 1.5 seconds
+        self.root.after(1500, lambda: self._dismiss_feedback(feedback_label))
+    
+    def _dismiss_feedback(self, widget):
+        """Dismiss the feedback widget"""
+        try:
+            if widget and widget.winfo_exists():
+                widget.destroy()
+        except:
+            pass
+
+
+
 # --- Constants ---
 COLORS = {
     "light_blue": "#36a0fe",
@@ -132,6 +247,21 @@ class TriviaGame:
         except pygame.error as e:
             messagebox.showerror("Audio Error", f"Could not initialize audio playback: {e}\nMusic and TTS may not work.")
 
+        # --- Initialize Sound Effects and Visual Feedback ---
+        try:
+            self.sfx = SoundEffectManager()
+            print("✓ Sound effects loaded successfully")
+        except Exception as e:
+            print(f"### WARNING: Failed to initialize sound effects: {e}")
+            self.sfx = None
+        
+        try:
+            self.feedback_animator = FeedbackAnimator(self.root)
+            print("✓ Visual feedback system loaded")
+        except Exception as e:
+            print(f"### WARNING: Failed to initialize feedback animator: {e}")
+            self.feedback_animator = None
+
         # Initialize game state variables
         self.num_rounds = 0
         self.num_teams = 0
@@ -154,7 +284,7 @@ class TriviaGame:
 
         # Load background image safely
         try:
-            bg_image_path = get_asset_path("TriviaRoyaleScene(2).jpg")
+            bg_image_path = get_asset_path("images/backgrounds/TriviaRoyaleScene(2).jpg")
             if not os.path.exists(bg_image_path):
                  raise FileNotFoundError(f"Image file not found at {bg_image_path}")
             self.original_bg_image = Image.open(bg_image_path)
@@ -365,45 +495,178 @@ class TriviaGame:
     def get_number_of_rounds(self):
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
-        Label(self.root, text="Enter Number of Rounds (1-25):", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
-        # Ensure bd=0 and highlightthickness=0
-        entry = Entry(self.root, font=FONTS["big_italic"], justify="center", bg=COLORS["light_blue"], fg=COLORS["soft_coral"], bd=0, highlightthickness=0)
-        entry.pack(pady=20)
+        
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=30)
+        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
+        # Question
+        Label(self.root, text="How many rounds would you like to play?", 
+              font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Helper text
+        Label(self.root, text="(Each round = 1 question per team)", 
+              font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
+        
+        # Entry field with better styling
+        entry_frame = Frame(self.root, bg=COLORS["dark_teal"], padx=2, pady=2)
+        entry_frame.pack(pady=20)
+        entry = Entry(entry_frame, font=("Helvetica", 36, "bold"), justify="center", 
+                      bg=COLORS["light_blue"], fg=COLORS["soft_coral"], 
+                      bd=0, highlightthickness=0, width=5)
+        entry.pack(padx=10, pady=10)
         entry.focus_set()
+        
+        # Quick select buttons
+        Label(self.root, text="Quick Select:", font=FONTS["small"], 
+              fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
+        
+        button_frame = Frame(self.root, bg=COLORS["light_blue"])
+        button_frame.pack()
+        
+        def select_rounds(num):
+            if self.sfx:
+                self.sfx.play('button_click')
+            entry.delete(0, tk.END)
+            entry.insert(0, str(num))
+            self.root.after(200, validate_input)
+        
+        quick_options = [3, 5, 10, 15]
+        for num in quick_options:
+            btn = Button(
+                button_frame,
+                text=str(num),
+                font=("Helvetica", 24, "bold"),
+                bg=COLORS["dark_teal"],
+                fg=COLORS["light_blue"],
+                activebackground=COLORS["soft_coral"],
+                activeforeground=COLORS["light_blue"],
+                padx=20,
+                pady=10,
+                bd=0,
+                command=lambda n=num: select_rounds(n),
+                cursor="hand2"
+            )
+            btn.pack(side=tk.LEFT, padx=5)
+        
+        # Instructions
+        Label(self.root, text="Type a number (1-25) or click a button above, then press ENTER", 
+              font=FONTS["xsmall"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
+        
         def validate_input(event=None):
             try:
                 num = int(entry.get())
                 if 1 <= num <= 25:
+                    if self.sfx:
+                        self.sfx.play('button_click')
                     self.num_rounds = num
                     self.root.unbind("<Return>")
                     self.get_number_of_teams()
                 else:
+                    if self.sfx:
+                        self.sfx.play('wrong')
                     messagebox.showerror("Invalid Input", "Please enter a number between 1 and 25.")
+                    entry.delete(0, tk.END)
+                    entry.focus_set()
             except ValueError:
-                messagebox.showerror("Invalid Input", "Please enter a valid number.")
+                if entry.get():
+                    if self.sfx:
+                        self.sfx.play('wrong')
+                    messagebox.showerror("Invalid Input", "Please enter a valid number.")
+                    entry.delete(0, tk.END)
+                entry.focus_set()
+        
         self.root.bind("<Return>", validate_input)
 
     def get_number_of_teams(self):
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
-        Label(self.root, text="Enter Number of Teams/Players (1-6):", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
-        # Ensure bd=0 and highlightthickness=0
-        entry = Entry(self.root, font=FONTS["big_italic"], justify="center", bg=COLORS["light_blue"], fg=COLORS["soft_coral"], bd=0, highlightthickness=0)
-        entry.pack(pady=20)
+        
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=30)
+        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
+        # Question
+        Label(self.root, text="How many teams are playing?", 
+              font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Helper text
+        Label(self.root, text="(1-6 teams or individual players)", 
+              font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
+        
+        # Entry field with better styling
+        entry_frame = Frame(self.root, bg=COLORS["dark_teal"], padx=2, pady=2)
+        entry_frame.pack(pady=20)
+        entry = Entry(entry_frame, font=("Helvetica", 36, "bold"), justify="center", 
+                      bg=COLORS["light_blue"], fg=COLORS["soft_coral"], 
+                      bd=0, highlightthickness=0, width=5)
+        entry.pack(padx=10, pady=10)
         entry.focus_set()
+        
+        # Quick select buttons
+        Label(self.root, text="Quick Select:", font=FONTS["small"], 
+              fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
+        
+        button_frame = Frame(self.root, bg=COLORS["light_blue"])
+        button_frame.pack()
+        
+        def select_teams(num):
+            if self.sfx:
+                self.sfx.play('button_click')
+            entry.delete(0, tk.END)
+            entry.insert(0, str(num))
+            self.root.after(200, validate_input)
+        
+        quick_options = [1, 2, 3, 4]
+        labels = ["Solo", "2 Teams", "3 Teams", "4 Teams"]
+        for num, label in zip(quick_options, labels):
+            btn = Button(
+                button_frame,
+                text=label,
+                font=("Helvetica", 18, "bold"),
+                bg=COLORS["dark_teal"],
+                fg=COLORS["light_blue"],
+                activebackground=COLORS["soft_coral"],
+                activeforeground=COLORS["light_blue"],
+                padx=15,
+                pady=15,
+                bd=0,
+                command=lambda n=num: select_teams(n),
+                cursor="hand2"
+            )
+            btn.pack(side=tk.LEFT, padx=5)
+        
+        # Instructions
+        Label(self.root, text="Type a number (1-6) or click a button above, then press ENTER", 
+              font=FONTS["xsmall"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
+        
         def validate_input(event=None):
             try:
                 num = int(entry.get())
                 if 1 <= num <= 6:
+                    if self.sfx:
+                        self.sfx.play('button_click')
                     self.num_teams = num
                     self.root.unbind("<Return>")
                     self.get_team_names()
                 else:
+                    if self.sfx:
+                        self.sfx.play('wrong')
                     messagebox.showerror("Invalid Input", "Please enter a number between 1 and 6.")
+                    entry.delete(0, tk.END)
+                    entry.focus_set()
             except ValueError:
-                messagebox.showerror("Invalid Input", "Please enter a valid number.")
+                if entry.get():
+                    if self.sfx:
+                        self.sfx.play('wrong')
+                    messagebox.showerror("Invalid Input", "Please enter a valid number.")
+                    entry.delete(0, tk.END)
+                entry.focus_set()
+        
         self.root.bind("<Return>", validate_input)
 
     def get_team_names(self):
@@ -411,34 +674,69 @@ class TriviaGame:
         self.clear_screen()
         self.root.configure(bg=COLORS["light_blue"])
 
-        Label(self.root, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
-        Label(self.root, text="Enter Team/Player Names:", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        # Title with icon
+        title_frame = Frame(self.root, bg=COLORS["light_blue"])
+        title_frame.pack(pady=30)
+        Label(title_frame, text="\U0001F451", font=("Helvetica", 50), bg=COLORS["light_blue"]).pack()
+        Label(title_frame, text="Trivia Royale", font=FONTS["big"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack()
+        
+        # Instruction
+        Label(self.root, text="Enter Team Names", 
+              font=FONTS["medium"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).pack(pady=20)
+        
+        # Helper text
+        if self.num_teams == 1:
+            helper_text = "(Playing solo - enter your name)"
+        else:
+            helper_text = f"(Enter a name for each of the {self.num_teams} teams)"
+        Label(self.root, text=helper_text, 
+              font=FONTS["small"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=5)
 
         self.team_entries = []
         entries_frame = Frame(self.root, bg=COLORS["light_blue"])
-        entries_frame.pack(pady=10)
+        entries_frame.pack(pady=20)
 
         for i in range(self.num_teams):
-            frame = Frame(entries_frame, bg=COLORS["light_blue"])
-            frame.pack(pady=5, padx=20)
+            # Container for each team entry
+            team_frame = Frame(entries_frame, bg=COLORS["light_blue"])
+            team_frame.pack(pady=10, padx=20)
+            
+            # Progress indicator
+            if self.num_teams > 1:
+                progress_text = f"Team {i + 1} of {self.num_teams}"
+            else:
+                progress_text = "Your Name"
+            
+            Label(team_frame, 
+                  text=progress_text, 
+                  font=FONTS["small"], 
+                  fg=COLORS["soft_coral"], 
+                  bg=COLORS["light_blue"]).pack(anchor='w', padx=5, pady=(0, 5))
 
-            Label(frame, text=f"Team {i + 1}:", font=FONTS["medium_bold"], fg=COLORS["soft_yellow"], bg=COLORS["light_blue"]).grid(row=0, column=0, padx=(0, 5), sticky='w')
-
-            # Ensure Entry has bd=0 and highlightthickness=0
-            entry = Entry(frame,
-                          font=FONTS["medium_bold"],
+            # Entry with border
+            entry_container = Frame(team_frame, bg=COLORS["dark_teal"], padx=2, pady=2)
+            entry_container.pack()
+            
+            entry = Entry(entry_container,
+                          font=("Helvetica", 24, "bold"),
                           justify="center",
                           bg=COLORS["light_blue"],
                           fg=COLORS["soft_coral"],
-                          bd=0, # Explicitly 0
-                          highlightthickness=0, # Remove highlight border
-                          width=25)
-            entry.grid(row=0, column=1, padx=(0, 0), sticky='ew')
-            frame.grid_columnconfigure(1, weight=1)
+                          bd=0,
+                          highlightthickness=0,
+                          width=20)
+            entry.pack(padx=8, pady=8)
 
             self.team_entries.append(entry)
             if i == 0:
                 entry.focus_set()
+
+        # Instructions at bottom
+        instruction_text = "Press ENTER after each name"
+        if self.num_teams > 1:
+            instruction_text += f" • {self.num_teams} teams total"
+        Label(self.root, text=instruction_text, 
+              font=FONTS["xsmall"], fg=COLORS["soft_coral"], bg=COLORS["light_blue"]).pack(pady=(30, 10))
 
         def handle_team_name_input(event=None):
             current_focus = self.root.focus_get()
@@ -450,25 +748,34 @@ class TriviaGame:
                     pass
 
             if current_index != -1 and not self.team_entries[current_index].get().strip():
-                 messagebox.showwarning("Input Required", f"Please enter a name for Team/Player {current_index + 1}.")
-                 self.team_entries[current_index].focus_set()
-                 return
+                if self.sfx:
+                    self.sfx.play('wrong')
+                messagebox.showwarning("Input Required", f"Please enter a name for Team {current_index + 1}.")
+                self.team_entries[current_index].focus_set()
+                return
 
             if current_index < self.num_teams - 1:
-                 self.team_entries[current_index + 1].focus_set()
+                # Play sound and move to next
+                if self.sfx:
+                    self.sfx.play('button_click')
+                self.team_entries[current_index + 1].focus_set()
             elif current_index == self.num_teams - 1:
-                 all_names = [entry.get().strip() for entry in self.team_entries]
-                 if all(all_names):
-                     self.team_names = all_names
-                     self.scores = [0] * self.num_teams
-                     self.root.unbind("<Return>")
-                     self.select_categories()
-                 else:
-                     for i, entry in enumerate(self.team_entries):
-                         if not entry.get().strip():
-                             messagebox.showwarning("Input Required", f"Please enter a name for Team/Player {i + 1}.")
-                             entry.focus_set()
-                             break
+                all_names = [entry.get().strip() for entry in self.team_entries]
+                if all(all_names):
+                    if self.sfx:
+                        self.sfx.play('button_click')
+                    self.team_names = all_names
+                    self.scores = [0] * self.num_teams
+                    self.root.unbind("<Return>")
+                    self.select_categories()
+                else:
+                    if self.sfx:
+                        self.sfx.play('wrong')
+                    for i, entry in enumerate(self.team_entries):
+                        if not entry.get().strip():
+                            messagebox.showwarning("Input Required", f"Please enter a name for Team {i + 1}.")
+                            entry.focus_set()
+                            break
 
         self.root.bind("<Return>", handle_team_name_input)
 
@@ -1032,7 +1339,7 @@ class TriviaGame:
 
 
     def play_intro_theme(self):
-        self.play_music("TriviaRoyaleTheme(2).mp3", loops=0)
+        self.play_music("audio/TriviaRoyaleTheme(2).mp3", loops=0)
 
     def play_thinking_theme(self):
         random_number = random.randint(1, 7)
